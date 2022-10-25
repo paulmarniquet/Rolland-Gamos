@@ -7,10 +7,10 @@ class GenerateRapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+        margin: const EdgeInsets.fromLTRB(0, 120, 0, 0),
+        padding: EdgeInsets.all(0),
         child: Column(
           children: <Widget>[
-
           GestureDetector(
               onTap: () {
                 //
@@ -20,6 +20,22 @@ class GenerateRapper extends StatelessWidget {
                   width: 275,
                   height: 275))
         ]));
+  }
+}
+
+
+class Play extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: GestureDetector(
+            onTap: () {
+              Navigator.push(context, PlayPage());
+            },
+            child: Image.network(
+                "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/cube-up.png?raw=true",
+                width: 100,
+                height: 100)));
   }
 }
 
@@ -33,21 +49,6 @@ class Options extends StatelessWidget {
             },
             child: Image.network(
                 "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/cube-down.png?raw=true",
-                width: 100,
-                height: 100)));
-  }
-}
-
-class Play extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: GestureDetector(
-            onTap: () {
-              Navigator.push(context, PlayPage());
-            },
-            child: Image.network(
-                "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/cube-up.png?raw=true",
                 width: 100,
                 height: 100)));
   }
