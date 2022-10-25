@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import "menu.dart";
-import 'main.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -15,7 +14,10 @@ class Home extends StatelessWidget {
         onTap: () {
           Navigator.push(context, PageTwo());
         },
-        child: logo,
+        child: Image.network(
+              "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/logo.png?raw=true",
+              width: 300,
+              height: 300),
       )
     ]))));
   }

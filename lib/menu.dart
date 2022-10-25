@@ -1,5 +1,4 @@
 import "game.dart";
-import 'main.dart';
 import 'options.dart';
 import 'package:flutter/material.dart';
 
@@ -7,18 +6,14 @@ class GenerateRapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.fromLTRB(0, 120, 0, 0),
-        padding: EdgeInsets.all(0),
         child: Column(
           children: <Widget>[
           GestureDetector(
               onTap: () {
                 //
               },
-              child: Image.network(
-                  "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/rappername.png?raw=true",
-                  width: 275,
-                  height: 275))
+              child: Image.network("https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/rappername.png?raw=true",
+              scale: 1.8,))
         ]));
   }
 }
@@ -28,14 +23,14 @@ class Play extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: const EdgeInsets.fromLTRB(0, 0, 50, 0),
         child: GestureDetector(
             onTap: () {
               Navigator.push(context, PlayPage());
             },
             child: Image.network(
                 "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/cube-up.png?raw=true",
-                width: 100,
-                height: 100)));
+                scale: 2.5)));
   }
 }
 
@@ -43,14 +38,14 @@ class Options extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: const EdgeInsets.fromLTRB(0, 0, 50, 0),
         child: GestureDetector(
             onTap: () {
               Navigator.push(context, OptionsPage());
             },
             child: Image.network(
                 "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/cube-down.png?raw=true",
-                width: 100,
-                height: 100)));
+                scale: 2.8)));
   }
 }
 
@@ -58,27 +53,31 @@ class musicLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.fromLTRB(0, 50, 0, 0),
         child: Image.network(
             "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/redbull_logo.png?raw=true",
-            width: 120,
-            height: 120));
+            color: const Color.fromRGBO(255, 255, 255, 0.4),
+            colorBlendMode: BlendMode.modulate,
+            scale: 9,));
   }
 }
 
 class PageTwo extends MaterialPageRoute<void> {
   PageTwo()
       : super(builder: (BuildContext context) {
+        MainAxisAlignment.start;
           return Scaffold(
             body: Center(
                 child: Column(
-                  children: [
+                  children: <Widget>[
+              const SizedBox(height: 150),
               GenerateRapper(),
+              const SizedBox(height: 100),
               Play(),
-              Options(),
+              Transform.translate(offset: Offset(52, -35), child: Options()),
+              const SizedBox(height: 80),
               musicLogo(),
             ])),
-            backgroundColor: const Color.fromARGB(255, 254, 220, 70),
+            backgroundColor: const Color.fromARGB(255, 238, 227, 177),
           );
         });
 }
