@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'options.dart';
 
 class BackHomeButton extends StatelessWidget {
+  const BackHomeButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,6 +20,8 @@ class BackHomeButton extends StatelessWidget {
 }
 
 class OptionButton extends StatelessWidget {
+  const OptionButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

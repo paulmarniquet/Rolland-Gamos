@@ -8,7 +8,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-            backgroundColor: Color.fromARGB(255, 248, 240, 203),
+            backgroundColor: const Color.fromARGB(255, 248, 240, 203),
             body: Center(
                 child: Stack(children: [
       GestureDetector(

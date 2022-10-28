@@ -11,7 +11,7 @@ class PlayPage extends MaterialPageRoute<void> {
           return Scaffold(
             body: Center(
                 child: Column(children: <Widget>[
-              OptionButton(),
+              const OptionButton(),
               const SizedBox(height: 40),
               const TimerWidget(),
               const SizedBox(height: 50),
@@ -62,7 +62,9 @@ class _TimerWidgetState extends State<TimerWidget> {
           timeleft--;
         });
         } else {
-          timer.cancel();
+          setState(() {
+            timer.cancel();
+          });
         }
       });
   }
