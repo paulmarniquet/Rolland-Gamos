@@ -70,6 +70,13 @@ flutter:
       fonts:
         - asset: assets/fonts/SansSerifExbFLF.otf
 
+    - family: Thin
+      fonts:
+        - asset: assets/fonts/SansSerifFLF.otf
+
+    - family: SemiThin
+      fonts:
+        - asset: assets/fonts/SansSerifFLF-Demibold.otf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

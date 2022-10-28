@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:featurine/main.dart';
 import 'package:flutter/material.dart';
 import 'buttons.dart';
-import 'menu.dart';
+
+TextEditingController _controller = TextEditingController();
 
 class PlayPage extends MaterialPageRoute<void> {
   PlayPage()
@@ -27,18 +27,19 @@ class PlayPage extends MaterialPageRoute<void> {
                         style: TextStyle(fontFamily: 'SansSerif2')),
                   ])),
               const SizedBox(height: 45),
-              const SizedBox(
+              SizedBox(
                   width: 300,
                   child: TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0))),
-                          filled: true,
-                          fillColor: Colors.white70,
-                          hintText: 'Qui a feat avec Limsa ?'))),
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0))),
+                        filled: true,
+                        fillColor: Colors.white70),
+                    controller: _controller,
+                  )),
             ])),
-            backgroundColor: Color.fromARGB(255, 250, 226, 120),
+            backgroundColor: const Color.fromARGB(255, 250, 226, 120),
           );
         });
 }
@@ -60,8 +61,10 @@ class _TimerWidgetState extends State<TimerWidget> {
         setState(() {
           timeleft--;
         });
-      }
-    });
+        } else {
+          timer.cancel();
+        }
+      });
   }
 
   void timeOnPageFunc() {
@@ -70,6 +73,7 @@ class _TimerWidgetState extends State<TimerWidget> {
       if (timeOnPage == 1) {
         startcountdown();
       }
+
     });
   }
 
@@ -85,7 +89,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     return Column(children: [
       Text(
         timeleft == 0 ? 'Loser' : timeleft.toString(),
-        style: const TextStyle(fontSize: 70),
+        style: const TextStyle(fontSize: 70, fontFamily: 'SemiThin'),
       ),
     ]);
   }

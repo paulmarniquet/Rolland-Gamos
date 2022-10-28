@@ -1,7 +1,6 @@
 import "game.dart";
 import 'options.dart';
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 
 class GenerateRapper extends StatelessWidget {
   @override
@@ -83,7 +82,7 @@ class Menu extends MaterialPageRoute<void> {
               const SizedBox(height: 80),
               musicLogo(),
             ])),
-            backgroundColor: const Color.fromARGB(255, 173, 189, 231),
+            backgroundColor: const Color.fromARGB(255, 250, 226, 120),
           );
         });
 }
