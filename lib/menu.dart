@@ -1,23 +1,24 @@
 import "game.dart";
 import 'options.dart';
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
 class GenerateRapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(
-          children: <Widget>[
-          GestureDetector(
-              onTap: () {
-                //
-              },
-              child: Image.network("https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/rappername.png?raw=true",
-              scale: 1.8,))
-        ]));
+        child: Column(children: <Widget>[
+      GestureDetector(
+          onTap: () {
+            //
+          },
+          child: Image.network(
+            "https://cdn-icons-png.flaticon.com/512/3031/3031710.png",
+            scale: 9,
+          ))
+    ]));
   }
 }
-
 
 class Play extends StatelessWidget {
   @override
@@ -54,22 +55,24 @@ class musicLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Image.network(
-            "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/redbull_logo.png?raw=true",
-            color: const Color.fromRGBO(255, 255, 255, 0.4),
-            colorBlendMode: BlendMode.modulate,
-            scale: 9,));
+      "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/redbull_logo.png?raw=true",
+      color: const Color.fromRGBO(255, 255, 255, 0.4),
+      colorBlendMode: BlendMode.modulate,
+      scale: 9,
+    ));
   }
 }
 
 class PageTwo extends MaterialPageRoute<void> {
   PageTwo()
       : super(builder: (BuildContext context) {
-        MainAxisAlignment.start;
+          MainAxisAlignment.start;
           return Scaffold(
             body: Center(
-                child: Column(
-                  children: <Widget>[
-              const SizedBox(height: 150),
+                child: Column(children: <Widget>[
+              const SizedBox(height: 100),
+              Text("Rappeur généré"),
+              const SizedBox(height: 40),
               GenerateRapper(),
               const SizedBox(height: 100),
               Play(),

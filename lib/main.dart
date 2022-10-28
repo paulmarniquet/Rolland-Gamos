@@ -1,10 +1,17 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import "home.dart";
+import 'dart:async';
+import 'home.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Home(),
-  ));
+  runApp(MyApp());
 }
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    );
+  }
+} 
