@@ -1,16 +1,30 @@
-# featurine
+  # Rolland Gamos
 
-A new Flutter project.
+  <a href="https://img.shields.io/badge/MADE%20WITH-FLUTTER-ff69b4" alt="FLUTTER">
+        <img src="https://img.shields.io/badge/MADE%20WITH-FLUTTER-ff69b4" /></a>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+*******
 
-A few resources to get you started if this is your first Flutter project:
+![ScreenMenu](https://samiaissi.com/wp-content/uploads/2019/10/logo-rap-jeu-def-scaled-uai-2064x1548.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  ## Description
+  
+  Rolland Gamos is a game that consist of ...
+  
+  ## Installation
+  
+  You can download the project [here](https://github.com/paulmarniquet/Rolland-Gamos/archive/refs/heads/master.zip) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  ## Usage
+
+
+
+  ## Questions
+
+  If you have any questions about the project you can reach out to me via GitHub with the information below. 
+
+  * **Paul Marniquet** _alias_ [@paulmarniquet](https://github.com/paulmarniquet)
+
+  
