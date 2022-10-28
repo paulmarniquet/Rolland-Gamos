@@ -12,7 +12,7 @@ class Home extends StatelessWidget {
                 child: Stack(children: [
       GestureDetector(
         onTap: () {
-          Navigator.push(context, PageTwo());
+          Navigator.push(context, Menu());
         },
         child: Image.network(
               "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/logo.png?raw=true",

@@ -61,6 +61,15 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+    - family: SansSerif
+      fonts:
+        - asset: assets/fonts/SansSerif-Regular.otf
+
+    - family: SansSerif2
+      fonts:
+        - asset: assets/fonts/SansSerifExbFLF.otf
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

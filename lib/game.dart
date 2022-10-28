@@ -12,18 +12,33 @@ class PlayPage extends MaterialPageRoute<void> {
             body: Center(
                 child: Column(children: <Widget>[
               OptionButton(),
-              const SizedBox(height: 60),
-              TimerWidget(),
+              const SizedBox(height: 40),
+              const TimerWidget(),
               const SizedBox(height: 50),
-              Text("Rappeur"),
-              const SizedBox(height: 80),
-              const TextField(
-                decoration: InputDecoration(border: OutlineInputBorder()),
-              ),
-              const SizedBox(height: 150),
-              musicLogo(),
+              SizedBox(
+                  width: 250,
+                  height: 250,
+                  child: Column(children: [
+                    Image.network(
+                        "https://alohanews.be/wp-content/uploads/2022/03/limsa-scaled.jpg",
+                        height: 175),
+                    const SizedBox(height: 20),
+                    const Text("RAPPEUR",
+                        style: TextStyle(fontFamily: 'SansSerif2')),
+                  ])),
+              const SizedBox(height: 45),
+              const SizedBox(
+                  width: 300,
+                  child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30.0))),
+                          filled: true,
+                          fillColor: Colors.white70,
+                          hintText: 'Qui a feat avec Limsa ?'))),
             ])),
-            backgroundColor: Color.fromARGB(255, 248, 214, 63),
+            backgroundColor: Color.fromARGB(255, 250, 226, 120),
           );
         });
 }
@@ -69,7 +84,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     timeOnPageFunc();
     return Column(children: [
       Text(
-        timeleft == 0 ? 'Dommage' : timeleft.toString(),
+        timeleft == 0 ? 'Loser' : timeleft.toString(),
         style: const TextStyle(fontSize: 70),
       ),
     ]);

@@ -10,7 +10,8 @@ class OptionsPage extends MaterialPageRoute<void> {
                 child: Column(children: [
               BackHomeButton(),
               const SizedBox(height: 120),
-              const Text("Options"),
+              const Text("DIFFICULTÉ",
+              style: TextStyle(fontFamily: 'SansSerif', fontSize: 30, color: Colors.white)),
               const SizedBox(height: 100),
               Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -20,10 +21,10 @@ class OptionsPage extends MaterialPageRoute<void> {
                 RedCan(),
               ],
               ),
-              const SizedBox(height: 200),
+              const SizedBox(height: 150),
               musicLogo(),
             ])),
-            backgroundColor: const Color.fromARGB(255, 254, 98, 70),
+            backgroundColor: const Color.fromARGB(255, 254, 129, 106),
           );
         });
 }
@@ -32,13 +33,18 @@ class BlueCan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: GestureDetector(
+      child: Column( children: <Widget>[
+        GestureDetector(
             onTap: () {
               //
             },
             child: Image.network(
                 "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/blue_can.png?raw=true",
-                scale: 3.8)));
+                scale: 3.8)),
+      const SizedBox(height: 10),
+      const Text("Facile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
+      ]),
+);
   }
 }
 
@@ -46,13 +52,18 @@ class RedCan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: GestureDetector(
+      child: Column( children: <Widget>[
+        GestureDetector(
             onTap: () {
               //
             },
             child: Image.network(
                 "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/red_can.png?raw=true",
-                scale: 3.8)));
+                scale: 3.8)),
+      const SizedBox(height: 10),
+      const Text("Difficile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
+      ]),
+);
   }
 }
 
@@ -60,12 +71,17 @@ class GreenCan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: GestureDetector(
+      child: Column( children: <Widget>[
+        GestureDetector(
             onTap: () {
               //
             },
             child: Image.network(
                 "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/green_can.png?raw=true",
-                scale: 3.8)));
+                scale: 3.8)),
+      const SizedBox(height: 10),
+      const Text("Moyen", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
+      ]),
+);
   }
 }

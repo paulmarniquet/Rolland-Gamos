@@ -30,7 +30,7 @@ class Play extends StatelessWidget {
               Navigator.push(context, PlayPage());
             },
             child: Image.network(
-                "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/cube-up.png?raw=true",
+                "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/jouerbutton.png?raw=true",
                 scale: 2.5)));
   }
 }
@@ -45,7 +45,7 @@ class Options extends StatelessWidget {
               Navigator.push(context, OptionsPage());
             },
             child: Image.network(
-                "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/cube-down.png?raw=true",
+                "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/niveaubutton.png?raw=true",
                 scale: 2.8)));
   }
 }
@@ -63,24 +63,27 @@ class musicLogo extends StatelessWidget {
   }
 }
 
-class PageTwo extends MaterialPageRoute<void> {
-  PageTwo()
+class Menu extends MaterialPageRoute<void> {
+  Menu()
       : super(builder: (BuildContext context) {
           MainAxisAlignment.start;
           return Scaffold(
             body: Center(
                 child: Column(children: <Widget>[
-              const SizedBox(height: 100),
-              Text("Rappeur généré"),
-              const SizedBox(height: 40),
-              GenerateRapper(),
+              const SizedBox(height: 150),
+
+              const Text("RAPPEUR", 
+              style: TextStyle(fontFamily: 'SansSerif', fontSize: 30, color: Colors.white)),
+
+              const SizedBox(height: 60),
+              //GenerateRapper(),
               const SizedBox(height: 100),
               Play(),
               Transform.translate(offset: Offset(52, -35), child: Options()),
               const SizedBox(height: 80),
               musicLogo(),
             ])),
-            backgroundColor: const Color.fromARGB(255, 238, 227, 177),
+            backgroundColor: const Color.fromARGB(255, 173, 189, 231),
           );
         });
 }
