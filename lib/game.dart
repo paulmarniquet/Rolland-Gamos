@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'buttons.dart';
+import 'menu.dart';
 
 TextEditingController _controller = TextEditingController();
 
 class PlayPage extends MaterialPageRoute<void> {
+
   PlayPage()
       : super(builder: (BuildContext context) {
           MainAxisAlignment.start;
@@ -23,8 +25,8 @@ class PlayPage extends MaterialPageRoute<void> {
                         "https://alohanews.be/wp-content/uploads/2022/03/limsa-scaled.jpg",
                         height: 175),
                     const SizedBox(height: 20),
-                    const Text("RAPPEUR",
-                        style: TextStyle(fontFamily: 'SansSerif2')),
+                    Text(GlobalData.rapname, 
+                    style: const TextStyle(fontFamily: 'SansSerif2')),
                   ])),
               const SizedBox(height: 45),
               SizedBox(
@@ -61,12 +63,12 @@ class _TimerWidgetState extends State<TimerWidget> {
         setState(() {
           timeleft--;
         });
-        } else {
-          setState(() {
-            timer.cancel();
-          });
-        }
-      });
+      } else {
+        setState(() {
+          timer.cancel();
+        });
+      }
+    });
   }
 
   void timeOnPageFunc() {
@@ -75,7 +77,6 @@ class _TimerWidgetState extends State<TimerWidget> {
       if (timeOnPage == 1) {
         startcountdown();
       }
-
     });
   }
 

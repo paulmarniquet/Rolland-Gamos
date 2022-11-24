@@ -1,23 +1,53 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
+import 'package:flutter/services.dart';
 import "game.dart";
 import 'options.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
-class GenerateRapper extends StatelessWidget {
+class GlobalData {
+  static String rapname = "";
+}
+
+class GenerateRapper extends StatefulWidget {
   const GenerateRapper({super.key});
+  @override
+  _GenerateRapperState createState() => _GenerateRapperState();
+}
+
+class _GenerateRapperState extends State<GenerateRapper> {
+  String textFromFile = "";
+  int timeOnPage = 0;
+  List<String> array = [];
+
+  getData() async {
+    String response;
+    response = await rootBundle.loadString('assets/database');
+    LineSplitter.split(response).forEach((line) => (array.add(line)));
+    setState(() {
+      textFromFile = array[Random().nextInt(array.length)];
+      GlobalData.rapname = textFromFile;
+    });
+  }
+
+  void timeOnPageFunc() {
+    Timer.periodic(const Duration(milliseconds: 1), (timer) async {
+      timeOnPage++;
+      if (timeOnPage == 1) {
+        getData();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      GestureDetector(
-      onTap: () {
-        //
-      },
-      child: Image.network(
-        "https://cdn-icons-png.flaticon.com/512/3031/3031710.png",
-        scale: 9,
-      ))
+    timeOnPageFunc();
+    return Column(children: [
+      const SizedBox(height: 50),
+      Text(textFromFile,
+          style: TextStyle(
+              fontFamily: 'SansSerif', fontSize: 30, color: Colors.white)),
     ]);
   }
 }
@@ -56,7 +86,6 @@ class Options extends StatelessWidget {
   }
 }
 
-// ignore: camel_case_types
 class musicLogo extends StatelessWidget {
   const musicLogo({super.key});
   @override
@@ -71,74 +100,22 @@ class musicLogo extends StatelessWidget {
 }
 
 class Menu extends MaterialPageRoute<void> {
-
-  Menu(): super(builder: (BuildContext context) {
-
-    late Future<Album> futureAlbum;
-    
+  Menu()
+      : super(builder: (BuildContext context) {
           MainAxisAlignment.start;
           return Scaffold(
             body: Center(
                 child: Column(children: <Widget>[
-              const SizedBox(height: 150),
-          //   FutureBuilder<Album>(
-          //     future: fetchAlbum(),
-          //     builder: (context, snapshot) {
-          //     if (snapshot.hasData) {
-          //       return Text(snapshot.data!.title);
-          //     } else if (snapshot.hasError) {
-          //       return Text('${snapshot.error}');
-          //     }
-          //     return const CircularProgressIndicator();
-          //   },
-          // ),
-              const Text("RAPPEUR", 
-              style: TextStyle(fontFamily: 'SansSerif', fontSize: 30, color: Colors.white)),
-
-              const SizedBox(height: 60),
-              //GenerateRapper(),
-              const SizedBox(height: 100),
+              const SizedBox(height: 130),
+              const GenerateRapper(),
+              const SizedBox(height: 120),
               const Play(),
-              Transform.translate(offset: const Offset(52, -35), child: const Options()),
+              Transform.translate(
+                  offset: const Offset(52, -35), child: const Options()),
               const SizedBox(height: 80),
               const musicLogo(),
             ])),
             backgroundColor: const Color.fromARGB(255, 250, 226, 120),
           );
         });
-}
-
-Future<Album> fetchAlbum() async {
-  final response = await http
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return Album.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
-  }
-}
-
-class Album {
-  final int userId;
-  final int id;
-  final String title;
-
-  const Album({
-    required this.userId,
-    required this.id,
-    required this.title,
-  });
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
-  }
 }
