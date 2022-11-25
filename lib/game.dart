@@ -24,7 +24,7 @@ class _PictureWidgetState extends State<PictureWidget> {
   getPicture() async {
     final spotifyApi = spotifyPackage.SpotifyApi(credentials);
     var search = await spotifyApi.search
-        .get(GlobalData.rapname)
+        .get(GlobalData.rapname, types: [SearchType.artist], market: "FR")
         .first(1)
         // ignore: avoid_print, invalid_return_type_for_catch_error
         .catchError((err) => print((err as SpotifyException).message));
