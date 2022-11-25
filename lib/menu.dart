@@ -47,7 +47,7 @@ class _GenerateRapperState extends State<GenerateRapper> {
       const SizedBox(height: 50),
       Text(textFromFile,
           style: TextStyle(
-              fontFamily: 'SansSerif', fontSize: 30, color: Colors.white)),
+              fontFamily: 'SansSerif', fontSize: 30, color: Colors.black87)),
     ]);
   }
 }
