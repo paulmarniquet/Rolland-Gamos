@@ -1,3 +1,4 @@
+import 'package:featurine/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'options.dart';
 import 'game.dart';
@@ -11,7 +12,7 @@ class Play extends StatelessWidget {
         margin: const EdgeInsets.fromLTRB(0, 0, 50, 0),
         child: GestureDetector(
             onTap: () {
-              Navigator.push(context, PlayPage());
+              Navigator.push(context, PlayPage(GlobalData.rapname));
             },
             child: Image.network(
                 "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/jouerbutton.png?raw=true",
