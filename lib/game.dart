@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:featurine/Algorithm.dart';
 import 'package:flutter/material.dart';
 import 'buttons.dart';
@@ -5,6 +7,7 @@ import 'PictureWidget.dart';
 import 'TimerWidget.dart';
 import 'GenerateRapperWidget.dart';
 import 'package:web_scraper/web_scraper.dart';
+import 'Algorithm.dart';
 
 TextEditingController controller = TextEditingController();
 
@@ -25,7 +28,7 @@ class PlayPage extends MaterialPageRoute<void> {
                   child: Column(children: [
                     const PictureWidget(),
                     const SizedBox(height: 20),
-                    Text(rapname,
+                    Text(GlobalData.rapname,
                         style: const TextStyle(fontFamily: 'SansSerif2')),
                   ])),
               const SizedBox(height: 60),
@@ -40,33 +43,25 @@ class PlayPage extends MaterialPageRoute<void> {
                         fillColor: Colors.white70),
                     controller: controller,
                   )),
-                  TextButton(onPressed: (() {
-                      if (controller.text.isNotEmpty) {
-                        GlobalData.rapname = controller.text;
-                        rapname = controller.text;
-                        if (controller.text == rapname) {
-                          Navigator.push(context, PlayPage(rapname));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Correct!'),
-                            ),
+                  TextButton(onPressed: (() async {
+                    //Future<bool> featured = getText();
+                    bool featured = await getText();
+                    if (featured == true) {
+                      GlobalData.rapname = controller.text;
+                      controller.clear();
+                      Navigator.push(context, PlayPage(GlobalData.rapname));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Correct!'),),
                           );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Incorrect!'),
-                            ),
-                          );
-                        }
-                      }
-                      else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Please enter a name'),
-                          ),
-                        );
-                      }
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Incorrect!'),
+                        ),
+                      );
                     }
+                  }
                   ), child: const Text("Envoie")),
                   Text(controller.text, style: const TextStyle(fontSize: 40)),
             ])),
