@@ -15,8 +15,8 @@ class Home extends StatelessWidget {
         onTap: () {
           Navigator.push(context, Menu());
         },
-        child: Image.network(
-              "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/logo.png?raw=true",
+        child: Image.asset(
+              "assets/images/logo.png",
               width: 300,
               height: 300),
       )

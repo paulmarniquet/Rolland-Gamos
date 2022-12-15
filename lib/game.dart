@@ -6,8 +6,6 @@ import 'buttons.dart';
 import 'PictureWidget.dart';
 import 'TimerWidget.dart';
 import 'GenerateRapperWidget.dart';
-import 'package:web_scraper/web_scraper.dart';
-import 'Algorithm.dart';
 
 TextEditingController controller = TextEditingController();
 

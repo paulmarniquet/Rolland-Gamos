@@ -14,8 +14,8 @@ class Play extends StatelessWidget {
             onTap: () {
               Navigator.push(context, PlayPage(GlobalData.rapname));
             },
-            child: Image.network(
-                "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/jouerbutton.png?raw=true",
+            child: Image.asset(
+                "assets/images/jouerbutton.png",
                 scale: 2.5)));
   }
 }
@@ -31,8 +31,8 @@ class Options extends StatelessWidget {
             onTap: () {
               Navigator.push(context, OptionsPage());
             },
-            child: Image.network(
-                "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/niveaubutton.png?raw=true",
+            child: Image.asset(
+                "assets/images/niveaubutton.png",
                 scale: 2.8)));
   }
 }
@@ -41,8 +41,8 @@ class musicLogo extends StatelessWidget {
   const musicLogo({super.key});
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/redbull_logo.png?raw=true",
+    return Image.asset(
+      "assets/images/redbull_logo.png",
       color: const Color.fromRGBO(255, 255, 255, 0.4),
       colorBlendMode: BlendMode.modulate,
       scale: 9,

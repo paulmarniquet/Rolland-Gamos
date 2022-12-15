@@ -39,8 +39,8 @@ class BlueCan extends StatelessWidget {
           onTap: () {
             //
           },
-          child: Image.network(
-              "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/blue_can.png?raw=true",
+          child: Image.asset(
+              "assets/images/blue_can.png",
               scale: 3.8)),
     const SizedBox(height: 10),
     const Text("Facile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
@@ -58,8 +58,8 @@ class RedCan extends StatelessWidget {
           onTap: () {
             //
           },
-          child: Image.network(
-              "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/red_can.png?raw=true",
+          child: Image.asset(
+              "assets/images/red_can.png",
               scale: 3.8)),
     const SizedBox(height: 10),
     const Text("Difficile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
@@ -77,8 +77,8 @@ class GreenCan extends StatelessWidget {
           onTap: () {
             //
           },
-          child: Image.network(
-              "https://github.com/paulmarniquet/Rolland-Gamos/blob/master/assets/images/green_can.png?raw=true",
+          child: Image.asset(
+              "assets/images/green_can.png",
               scale: 3.8)),
     const SizedBox(height: 10),
     const Text("Moyen", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),

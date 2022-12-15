@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'dart:ffi';
-
 import 'package:featurine/GenerateRapperWidget.dart';
-import 'package:flutter/material.dart';
 import 'PictureWidget.dart';
 import 'package:spotify/spotify.dart' as spotifyPackage;
 import 'package:spotify/spotify.dart';
@@ -12,28 +9,23 @@ import 'game.dart';
 String get rapname => GlobalData.rapname;
 String get userinput => controller.text;
 
-String capitalize(String value) {
-  var result = value[0].toUpperCase();
-  bool cap = true;
-  for (int i = 1; i < value.length; i++) {
-    if (value[i - 1] == " " && cap == true) {
-      result = result + value[i].toUpperCase();
-    } else {
-      result = result + value[i];
-      cap = false;
-    }
+String capitalizeNames(String input) {
+  final List<String> splitStr = input.split(' ');
+  for (int i = 0; i < splitStr.length; i++) {
+    splitStr[i] =
+    '${splitStr[i][0].toUpperCase()}${splitStr[i].substring(1)}';
   }
-  return result;
+  final output = splitStr.join(' ');
+  return output;
 }
 
 String formatInput(String controllerInput) {
   String formattedInput = controllerInput.toLowerCase();
-  formattedInput = capitalize(formattedInput);
-
+  formattedInput = capitalizeNames(formattedInput);
+  
   if (formattedInput[formattedInput.length - 1] == " ") {
     formattedInput = formattedInput.substring(0, formattedInput.length - 1);
   }
-
   return formattedInput;
 }
 
@@ -44,9 +36,7 @@ Future<bool> getText() async {
     Future<bool> featured = Future<bool>.value(false);
     String artistInput = userinput;
     artistInput = formatInput(userinput);
-
-    print(artistInput);
-
+    
     for (var pages in check) {
       for (var item in pages.items!) {
         if (item is Track) {
