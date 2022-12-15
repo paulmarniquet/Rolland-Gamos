@@ -44,10 +44,10 @@ class PlayPage extends MaterialPageRoute<void> {
                     controller: controller,
                   )),
                   TextButton(onPressed: (() async {
-                    //Future<bool> featured = getText();
                     bool featured = await getText();
                     if (featured == true) {
                       GlobalData.rapname = controller.text;
+                      GlobalData.rapname = formatInput(GlobalData.rapname);
                       controller.clear();
                       Navigator.push(context, PlayPage(GlobalData.rapname));
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -55,6 +55,7 @@ class PlayPage extends MaterialPageRoute<void> {
                           content: Text('Correct!'),),
                           );
                     } else {
+                      controller.clear();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Incorrect!'),
