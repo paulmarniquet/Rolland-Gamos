@@ -1,6 +1,7 @@
-import 'package:featurine/menu.dart';
 import 'package:flutter/material.dart';
+import 'GenerateRapperWidget.dart';
 import 'buttons.dart';
+import 'game.dart';
 
 class OptionsPage extends MaterialPageRoute<void> {
   OptionsPage()
@@ -37,13 +38,14 @@ class BlueCan extends StatelessWidget {
     return Column( children: <Widget>[
       GestureDetector(
           onTap: () {
-            //
+            GlobalData.difficulty = 1;
+            Navigator.push(context, PlayPage(GlobalData.rapname));
           },
           child: Image.asset(
               "assets/images/blue_can.png",
               scale: 3.8)),
     const SizedBox(height: 10),
-    const Text("Facile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
+    const Text("30", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
     ]);
   }
 }
@@ -56,13 +58,13 @@ class RedCan extends StatelessWidget {
     return Column( children: <Widget>[
       GestureDetector(
           onTap: () {
-            //
+            GlobalData.difficulty = 3;
           },
           child: Image.asset(
               "assets/images/red_can.png",
               scale: 3.8)),
     const SizedBox(height: 10),
-    const Text("Difficile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
+    const Text("90", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
     ]);
   }
 }
@@ -75,13 +77,13 @@ class GreenCan extends StatelessWidget {
     return Column( children: <Widget>[
       GestureDetector(
           onTap: () {
-            //
+            GlobalData.difficulty = 2;
           },
           child: Image.asset(
               "assets/images/green_can.png",
               scale: 3.8)),
     const SizedBox(height: 10),
-    const Text("Moyen", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
+    const Text("60", style: TextStyle(fontFamily: 'SansSerif', fontSize: 20, color: Colors.white)),
     ]);
   }
 }

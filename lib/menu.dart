@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'GenerateRapperWidget.dart';
 
 class Menu extends MaterialPageRoute<void> {
-  Menu()
-      : super(builder: (BuildContext context) {
+  Menu() : super(builder: (BuildContext context) {
           MainAxisAlignment.start;
           return Scaffold(
             body: Center(

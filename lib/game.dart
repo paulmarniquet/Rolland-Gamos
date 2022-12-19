@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:featurine/Algorithm.dart';
 import 'package:flutter/material.dart';
 import 'buttons.dart';
@@ -16,8 +14,7 @@ class PlayPage extends MaterialPageRoute<void> {
           return Scaffold(
             body: Center(
                 child: Column(children: <Widget>[
-              const OptionButton(),
-              const SizedBox(height: 40),
+              const SizedBox(height: 110),
               const TimerWidget(),
               const SizedBox(height: 50),
               SizedBox(
@@ -29,7 +26,7 @@ class PlayPage extends MaterialPageRoute<void> {
                     Text(GlobalData.rapname,
                         style: const TextStyle(fontFamily: 'SansSerif2')),
                   ])),
-              const SizedBox(height: 60),
+              const SizedBox(height: 20),
               SizedBox(
                   width: 300,
                   child: TextField(
@@ -41,6 +38,7 @@ class PlayPage extends MaterialPageRoute<void> {
                         fillColor: Colors.white70),
                     controller: controller,
                   )),
+              const SizedBox(height: 50),
                   TextButton(onPressed: (() async {
                     bool featured = await getText();
                     if (featured == true) {
@@ -48,21 +46,21 @@ class PlayPage extends MaterialPageRoute<void> {
                       GlobalData.rapname = formatInput(GlobalData.rapname);
                       controller.clear();
                       Navigator.push(context, PlayPage(GlobalData.rapname));
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Correct!'),),
-                          );
                     } else {
                       controller.clear();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Incorrect!'),
+                          content: Text('Not featured'),
                         ),
                       );
                     }
                   }
-                  ), child: const Text("Envoie")),
-                  Text(controller.text, style: const TextStyle(fontSize: 40)),
+                  ), child: const Text("Envoie"), style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.black,
+                    onSurface: Colors.grey,
+                  ),
+                  ),
             ])),
             backgroundColor: const Color.fromARGB(255, 250, 226, 120),
           );

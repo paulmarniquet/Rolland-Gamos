@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class GlobalData {
   static String rapname = "";
+  static int difficulty = 1;
 }
 
 class GenerateRapper extends StatefulWidget {
