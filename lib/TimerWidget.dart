@@ -1,42 +1,43 @@
 import 'dart:async';
 import 'package:featurine/GenerateRapperWidget.dart';
-import 'package:featurine/menu.dart';
 import 'package:flutter/material.dart';
+
+import 'menu.dart';
 
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({super.key});
   @override
-  // ignore: library_private_types_in_public_api
   _TimerWidgetState createState() => _TimerWidgetState();
 }
 
 
 class _TimerWidgetState extends State<TimerWidget> {
 
-  int timeleft = 60;
+  int timeLeft = 60;
   int timeOnPage = 0;
   bool launched = false;
+  bool newGame = false;
 
 
   void check_difficulty() {
     if (GlobalData.difficulty == 1 && !launched) {
-      timeleft = 30;
+      timeLeft = 30;
       launched = true;
     } else if (GlobalData.difficulty == 2 && !launched) {
-      timeleft = 60;
+      timeLeft = 60;
       launched = true;
     } else if (GlobalData.difficulty == 3 && !launched) {
-      timeleft = 90;
+      timeLeft = 90;
       launched = true;
     }
   }
 
   void startcountdown() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (timeleft != 0) {
+      if (timeLeft != 0) {
         setState(() {
-          timeleft--;
+          timeLeft--;
         });
       } else {
         setState(() {
@@ -57,10 +58,42 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   void checkTime() {
     Timer.periodic(const Duration(milliseconds: 1), (timer) {
-      if (timeleft < 26) {
-        //showDialog(context: context, builder: (BuildContext context) => defeatWidget(context));
+      if (timeLeft == 0 && !newGame) {
+        resetGame();
       }
     });
+  }
+
+  void resetGame() {
+        GlobalData.rapname = "";
+        GlobalData.difficulty = 1;
+        timeLeft = 60;
+        timeOnPage = 0;
+        GlobalData.score = 0;
+        launched = false;
+        newGame = true;
+        Navigator.push(context, Menu());
+        alertDialog();
+  }
+
+  void alertDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Time's up!"),
+          content: const Text("T'as plus de temps !"),
+          actions: [
+            TextButton(
+              child: const Text("Recommence"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -70,7 +103,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     checkTime();
     return Column(children: [
       Text(
-        timeleft == 0 ? 'Loser' : timeleft.toString(),
+        timeLeft == 0 ? 'Loser' : timeLeft.toString(),
         style: const TextStyle(fontSize: 70, fontFamily: 'SemiThin'),
       ),
     ]);

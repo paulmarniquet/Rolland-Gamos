@@ -1,6 +1,5 @@
 import 'package:featurine/Algorithm.dart';
 import 'package:flutter/material.dart';
-import 'buttons.dart';
 import 'PictureWidget.dart';
 import 'TimerWidget.dart';
 import 'GenerateRapperWidget.dart';
@@ -39,9 +38,12 @@ class PlayPage extends MaterialPageRoute<void> {
                     controller: controller,
                   )),
               const SizedBox(height: 50),
+                  Text(GlobalData.score.toString(),
+                      style: const TextStyle(fontFamily: 'SansSerif2')),
                   TextButton(onPressed: (() async {
                     bool featured = await getText();
                     if (featured == true) {
+                      GlobalData.score += 1;
                       GlobalData.rapname = controller.text;
                       GlobalData.rapname = formatInput(GlobalData.rapname);
                       controller.clear();
@@ -56,9 +58,7 @@ class PlayPage extends MaterialPageRoute<void> {
                     }
                   }
                   ), child: const Text("Envoie"), style: TextButton.styleFrom(
-                    primary: Colors.white,
                     backgroundColor: Colors.black,
-                    onSurface: Colors.grey,
                   ),
                   ),
             ])),
