@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'GenerateRapperWidget.dart';
-import 'buttons.dart';
-import 'game.dart';
+import 'Buttons.dart';
 
 class OptionsPage extends MaterialPageRoute<void> {
   OptionsPage()
@@ -39,7 +38,7 @@ class BlueCan extends StatelessWidget {
       GestureDetector(
           onTap: () {
             GlobalData.difficulty = 1;
-            Navigator.push(context, PlayPage(GlobalData.rapname));
+            Navigator.pop(context);
           },
           child: Image.asset(
               "assets/images/blue_can.png",
@@ -59,6 +58,7 @@ class RedCan extends StatelessWidget {
       GestureDetector(
           onTap: () {
             GlobalData.difficulty = 3;
+            Navigator.pop(context);
           },
           child: Image.asset(
               "assets/images/red_can.png",
@@ -78,6 +78,7 @@ class GreenCan extends StatelessWidget {
       GestureDetector(
           onTap: () {
             GlobalData.difficulty = 2;
+            Navigator.pop(context);
           },
           child: Image.asset(
               "assets/images/green_can.png",

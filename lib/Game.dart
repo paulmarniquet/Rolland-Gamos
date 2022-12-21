@@ -6,11 +6,31 @@ import 'GenerateRapperWidget.dart';
 
 TextEditingController controller = TextEditingController();
 
+void scoreDiff() {
+  if (GlobalData.difficulty == 1) {
+    GlobalData.score += 3;
+  } else if (GlobalData.difficulty == 2) {
+    GlobalData.score += 2;
+  } else if (GlobalData.difficulty == 3) {
+    GlobalData.score += 1;
+  }
+}
+
+bool checkRapperName(String name) {
+  for (int i = 0; i < GlobalData.rappers.length; i++) {
+    if (name == GlobalData.rappers[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+
 class PlayPage extends MaterialPageRoute<void> {
-  PlayPage(rapname)
-      : super(builder: (BuildContext context) {
+  PlayPage(rapname) : super(builder: (BuildContext context) {
           MainAxisAlignment.start;
-          return Scaffold(
+          return WillPopScope(
+          onWillPop: () async => false,
+          child: Scaffold(
             body: Center(
                 child: Column(children: <Widget>[
               const SizedBox(height: 110),
@@ -42,10 +62,11 @@ class PlayPage extends MaterialPageRoute<void> {
                       style: const TextStyle(fontFamily: 'SansSerif2')),
                   TextButton(onPressed: (() async {
                     bool featured = await getText();
-                    if (featured == true) {
-                      GlobalData.score += 1;
+                    if (featured == true && !checkRapperName(formatInput(controller.text))) {
+                      scoreDiff();
                       GlobalData.rapname = controller.text;
                       GlobalData.rapname = formatInput(GlobalData.rapname);
+                      GlobalData.rappers.add(GlobalData.rapname);
                       controller.clear();
                       Navigator.push(context, PlayPage(GlobalData.rapname));
                     } else {
@@ -57,12 +78,13 @@ class PlayPage extends MaterialPageRoute<void> {
                       );
                     }
                   }
-                  ), child: const Text("Envoie"), style: TextButton.styleFrom(
+                  ), style: TextButton.styleFrom(
                     backgroundColor: Colors.black,
-                  ),
+                  ), child: const Text("Envoie"),
                   ),
             ])),
             backgroundColor: const Color.fromARGB(255, 250, 226, 120),
+          ),
           );
         });
 }

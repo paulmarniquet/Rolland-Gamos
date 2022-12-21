@@ -1,7 +1,7 @@
 import 'package:featurine/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
-import 'options.dart';
-import 'game.dart';
+import 'Options.dart';
+import 'Game.dart';
 
 class Play extends StatelessWidget {
   const Play({super.key});
@@ -58,8 +58,8 @@ class BackHomeButton extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(280, 40, 0, 0),
         child: GestureDetector(
             onTap: () {
-                Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
-                },
+              Navigator.pop(context);
+            },
             child: Image.network(
                 "https://cdn-icons-png.flaticon.com/512/2920/2920665.png",
                 width: 40,

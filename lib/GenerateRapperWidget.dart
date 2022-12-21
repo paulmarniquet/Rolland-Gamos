@@ -8,6 +8,7 @@ class GlobalData {
   static String rapname = "";
   static int difficulty = 1;
   static int score = 0;
+  static List<String> rappers = [];
 }
 
 class GenerateRapper extends StatefulWidget {
@@ -28,6 +29,7 @@ class _GenerateRapperState extends State<GenerateRapper> {
     setState(() {
       textFromFile = array[Random().nextInt(array.length)];
       GlobalData.rapname = textFromFile;
+      GlobalData.rappers.add(textFromFile);
     });
   }
 

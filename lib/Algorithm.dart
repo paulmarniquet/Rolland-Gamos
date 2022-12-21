@@ -3,7 +3,7 @@ import 'package:featurine/GenerateRapperWidget.dart';
 import 'PictureWidget.dart';
 import 'package:spotify/spotify.dart' as spotifyPackage;
 import 'package:spotify/spotify.dart';
-import 'game.dart';
+import 'Game.dart';
 
 
 String get rapname => GlobalData.rapname;
@@ -34,8 +34,7 @@ Future<bool> getText() async {
     var check = await spotifyApi.search.get("$rapname $userinput", types: [SearchType.track], market: "FR").first(1);
     String id = "";
     Future<bool> featured = Future<bool>.value(false);
-    String artistInput = userinput;
-    artistInput = formatInput(userinput);
+    String artistInput = formatInput(userinput);
     
     for (var pages in check) {
       for (var item in pages.items!) {

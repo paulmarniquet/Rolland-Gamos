@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:featurine/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 
-import 'menu.dart';
+import 'Menu.dart';
 
 
 class TimerWidget extends StatefulWidget {
@@ -72,7 +72,7 @@ class _TimerWidgetState extends State<TimerWidget> {
         GlobalData.score = 0;
         launched = false;
         newGame = true;
-        Navigator.push(context, Menu());
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const Menu()));
         alertDialog();
   }
 

@@ -37,6 +37,8 @@ dependencies:
   http: ^0.13.5
   spotify: ^0.8.0
   web_scraper: ^0.1.4
+  animator: ^3.2.0
+
 
 dev_dependencies:
   flutter_test:
