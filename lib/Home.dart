@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import "Menu.dart";
 import 'package:animator/animator.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -19,7 +22,7 @@ class Home extends StatelessWidget {
             return const Menu();
           }, transitionsBuilder: (context, animation1, animation2, child) {
             return FadeTransition(opacity: animation1, child: child);
-          }, transitionDuration: const Duration(milliseconds: 1000)));
+          }, transitionDuration: const Duration(milliseconds: 500)));
         },
         child: Animator(builder: (context, animatorState, child) {
           return Opacity(

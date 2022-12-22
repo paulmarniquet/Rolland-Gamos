@@ -9,6 +9,9 @@ class GlobalData {
   static int difficulty = 1;
   static int score = 0;
   static List<String> rappers = [];
+  static bool diff1 = false;
+  static bool diff2 = false;
+  static bool diff3 = false;
 }
 
 class GenerateRapper extends StatefulWidget {

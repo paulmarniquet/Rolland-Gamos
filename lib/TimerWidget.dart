@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:featurine/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
-
 import 'Menu.dart';
 
 
