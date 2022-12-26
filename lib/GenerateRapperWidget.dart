@@ -12,6 +12,7 @@ class GlobalData {
   static bool diff1 = false;
   static bool diff2 = false;
   static bool diff3 = false;
+  static TextEditingController controller = TextEditingController();
 }
 
 class GenerateRapper extends StatefulWidget {
@@ -51,7 +52,7 @@ class _GenerateRapperState extends State<GenerateRapper> {
     return Column(children: [
       const SizedBox(height: 50),
       Text(textFromFile,
-          style: TextStyle(
+          style: const TextStyle(
               fontFamily: 'SansSerif', fontSize: 30, color: Colors.black87)),
     ]);
   }

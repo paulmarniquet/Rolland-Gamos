@@ -3,11 +3,9 @@ import 'package:featurine/GenerateRapperWidget.dart';
 import 'PictureWidget.dart';
 import 'package:spotify/spotify.dart' as spotifyPackage;
 import 'package:spotify/spotify.dart';
-import 'Game.dart';
-
 
 String get rapname => GlobalData.rapname;
-String get userinput => controller.text;
+String get userinput => GlobalData.controller.text;
 
 String capitalizeNames(String input) {
   final List<String> splitStr = input.split(' ');
@@ -22,7 +20,7 @@ String capitalizeNames(String input) {
 String formatInput(String controllerInput) {
   String formattedInput = controllerInput.toLowerCase();
   formattedInput = capitalizeNames(formattedInput);
-  
+
   if (formattedInput[formattedInput.length - 1] == " ") {
     formattedInput = formattedInput.substring(0, formattedInput.length - 1);
   }

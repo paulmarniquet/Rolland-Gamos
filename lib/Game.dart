@@ -4,8 +4,6 @@ import 'PictureWidget.dart';
 import 'TimerWidget.dart';
 import 'GenerateRapperWidget.dart';
 
-TextEditingController controller = TextEditingController();
-
 void scoreDiff() {
   if (GlobalData.difficulty == 1) {
     GlobalData.score += 3;
@@ -31,7 +29,8 @@ class PlayPage extends MaterialPageRoute<void> {
           return WillPopScope(
           onWillPop: () async => false,
           child: Scaffold(
-            body: Center(
+              backgroundColor: const Color.fromARGB(255, 250, 226, 120),
+            body: SingleChildScrollView(child: Center(
                 child: Column(children: <Widget>[
               const SizedBox(height: 110),
               const TimerWidget(),
@@ -55,22 +54,22 @@ class PlayPage extends MaterialPageRoute<void> {
                                 BorderRadius.all(Radius.circular(30.0))),
                         filled: true,
                         fillColor: Colors.white70),
-                    controller: controller,
+                    controller: GlobalData.controller,
                   )),
               const SizedBox(height: 50),
                   Text(GlobalData.score.toString(),
                       style: const TextStyle(fontFamily: 'SansSerif2')),
                   TextButton(onPressed: (() async {
                     bool featured = await getText();
-                    if (featured == true && !checkRapperName(formatInput(controller.text))) {
+                    if (featured == true && !checkRapperName(formatInput(GlobalData.controller.text))) {
                       scoreDiff();
-                      GlobalData.rapname = controller.text;
+                      GlobalData.rapname = GlobalData.controller.text;
                       GlobalData.rapname = formatInput(GlobalData.rapname);
                       GlobalData.rappers.add(GlobalData.rapname);
-                      controller.clear();
+                      GlobalData.controller.clear();
                       Navigator.push(context, PlayPage(GlobalData.rapname));
                     } else {
-                      controller.clear();
+                      GlobalData.controller.clear();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Not featured'),
@@ -83,8 +82,6 @@ class PlayPage extends MaterialPageRoute<void> {
                   ), child: const Text("Envoie"),
                   ),
             ])),
-            backgroundColor: const Color.fromARGB(255, 250, 226, 120),
-          ),
-          );
+          )));
         });
 }

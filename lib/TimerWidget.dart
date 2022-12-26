@@ -66,9 +66,8 @@ class _TimerWidgetState extends State<TimerWidget> {
   void resetGame() {
         GlobalData.rapname = "";
         GlobalData.difficulty = 1;
-        timeLeft = 60;
-        timeOnPage = 0;
         GlobalData.score = 0;
+        GlobalData.controller.clear();
         launched = false;
         newGame = true;
         Navigator.push(context, MaterialPageRoute(builder: (context) => const Menu()));
