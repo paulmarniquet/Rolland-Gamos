@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:featurine/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Options.dart';
@@ -8,10 +9,15 @@ class Play extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AudioPlayer player = AudioPlayer();
+    final song = AssetSource("sound/button.mp3");
+    player.setVolume(0.2);
+    player.setSource(song);
     return Container(
         margin: const EdgeInsets.fromLTRB(0, 0, 50, 0),
         child: GestureDetector(
             onTap: () {
+              player.play(song);
               Navigator.push(context, PlayPage(GlobalData.rapname));
             },
             child: Image.asset(

@@ -28,7 +28,8 @@ class PlayPage extends MaterialPageRoute<void> {
           MainAxisAlignment.start;
           return WillPopScope(
           onWillPop: () async => false,
-          child: Scaffold(
+    child: GestureDetector(onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+    child: Scaffold(
               backgroundColor: const Color.fromARGB(255, 250, 226, 120),
             body: SingleChildScrollView(child: Center(
                 child: Column(children: <Widget>[
@@ -82,6 +83,7 @@ class PlayPage extends MaterialPageRoute<void> {
                   ), child: const Text("Envoie"),
                   ),
             ])),
-          )));
+          )))
+          );
         });
 }

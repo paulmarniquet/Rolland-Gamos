@@ -1,13 +1,19 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import "Menu.dart";
 import 'package:animator/animator.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/src/audioplayer.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AudioPlayer player = AudioPlayer();
+    final song = AssetSource("sound/can.mp3");
+    player.setVolume(0.1);
+    player.setSource(song);
     return WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -16,6 +22,7 @@ class Home extends StatelessWidget {
                 child: Stack(children: [
       GestureDetector(
         onTap: () {
+          player.play(song);
           Navigator.push(context, PageRouteBuilder(pageBuilder: (context, animation1, _) {
             return const Menu();
           }, transitionsBuilder: (context, animation1, animation2, child) {

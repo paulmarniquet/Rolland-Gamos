@@ -1,4 +1,5 @@
 import 'package:animator/animator.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'Game.dart';
 import 'GenerateRapperWidget.dart';
@@ -58,12 +59,17 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    AudioPlayer player = AudioPlayer();
+    final song = AssetSource("sound/button.mp3");
+    player.setVolume(0.2);
+    player.setSource(song);
     return Column( children: <Widget>[
       AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
           return GestureDetector(
             onTap: () {
+              player.play(song);
               setState(() {
                 GlobalData.diff1 = !GlobalData.diff1;
                 if (GlobalData.diff1) {
@@ -88,8 +94,8 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
         },
       ),
       const SizedBox(height: 10),
-      const Text("30 secondes", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),
-      const Text("3 points", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),    ]);
+      const Text("Difficile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white))
+    ]);
   }
 }
 
@@ -119,12 +125,17 @@ class _GreenCanState extends State<GreenCan> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    AudioPlayer player = AudioPlayer();
+    final song = AssetSource("sound/button.mp3");
+    player.setVolume(0.2);
+    player.setSource(song);
     return Column( children: <Widget>[
       AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
           return GestureDetector(
             onTap: () {
+              player.play(song);
               setState(() {
                 GlobalData.diff2 = !GlobalData.diff2;
                 if (GlobalData.diff2) {
@@ -149,8 +160,7 @@ class _GreenCanState extends State<GreenCan> with SingleTickerProviderStateMixin
         },
       ),
       const SizedBox(height: 10),
-      const Text("60 secondes", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),
-      const Text("2 points", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),
+      const Text("Moyen", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),
     ]);
   }
 }
@@ -179,12 +189,17 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    AudioPlayer player = AudioPlayer();
+    final song = AssetSource("sound/button.mp3");
+    player.setVolume(0.2);
+    player.setSource(song);
     return Column( children: <Widget>[
       AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
           return GestureDetector(
             onTap: () {
+              player.play(song);
               setState(() {
                 GlobalData.diff3 = !GlobalData.diff3;
                 if (GlobalData.diff3) {
@@ -209,7 +224,7 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
         },
       ),
       const SizedBox(height: 10),
-      const Text("90 secondes", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),
-      const Text("1 point", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),    ]);
+      const Text("Facile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),
+    ]);
   }
 }
