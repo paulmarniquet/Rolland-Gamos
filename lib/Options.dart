@@ -8,29 +8,43 @@ import 'Buttons.dart';
 class OptionsPage extends MaterialPageRoute<void> {
   OptionsPage()
       : super(builder: (BuildContext context) {
-    return Scaffold(
+          return Scaffold(
             body: Center(
                 child: Column(children: [
-              const BackHomeButton(),
-              const SizedBox(height: 120),
+              const SizedBox(height: 180),
               const Text("DIFFICULTÉ",
-              style: TextStyle(fontFamily: 'SansSerif', fontSize: 30, color: Colors.white)),
-              const SizedBox(height: 100),
+                  style: TextStyle(
+                      fontFamily: 'SansSerif',
+                      fontSize: 30,
+                      color: Colors.black)),
+              const SizedBox(height: 120),
               Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                BlueCan(),
-                GreenCan(),
-                RedCan(),
-              ],
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  BlueCan(),
+                  GreenCan(),
+                  RedCan(),
+                ],
               ),
-              ElevatedButton(onPressed: () {
-                Navigator.push(context, PlayPage(GlobalData.rapname));
-              }, child: const Text("JOUER")),
               const SizedBox(height: 100),
-              const musicLogo(),
+              ElevatedButton(
+                onPressed: () {
+                  GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+                  Navigator.push(context, PlayPage(GlobalData.rapname));
+                },
+                style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(170, 50),
+                  primary: Colors.white,
+                  onPrimary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+                child: const Text("LESGO!"),
+              ),
+              const SizedBox(height: 60),
             ])),
-            backgroundColor: const Color.fromARGB(255, 254, 129, 106),
+            //backgroundColor: const Color.fromARGB(255, 254, 129, 106),
           );
         });
 }
@@ -48,7 +62,8 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
   }
 
   @override
@@ -59,17 +74,13 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    AudioPlayer player = AudioPlayer();
-    final song = AssetSource("sound/button.mp3");
-    player.setVolume(0.2);
-    player.setSource(song);
-    return Column( children: <Widget>[
+    return Column(children: <Widget>[
       AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
           return GestureDetector(
             onTap: () {
-              player.play(song);
+              GlobalData.buttonPlayer.play(GlobalData.buttonSound);
               setState(() {
                 GlobalData.diff1 = !GlobalData.diff1;
                 if (GlobalData.diff1) {
@@ -82,24 +93,30 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
               GlobalData.diff2 = false;
               GlobalData.diff3 = false;
             },
-            child: GlobalData.diff1 ? Animator(builder: (context, animatorState, child) {
-              return Transform.rotate(
-                angle: 180,
-                child: child,
-              );
-            }, duration: const Duration(seconds: 1), cycles: 1, curve: Curves.easeInOut,
-          child : Image.asset('assets/images/blue_can.png', scale: 3.8))
-                : Image.asset('assets/images/blue_can.png', scale : 3.8),
+            child: GlobalData.diff1
+                ? Animator(
+                    builder: (context, animatorState, child) {
+                      return Transform.rotate(
+                        angle: 180,
+                        child: child,
+                      );
+                    },
+                    duration: const Duration(seconds: 1),
+                    cycles: 1,
+                    curve: Curves.easeInOut,
+                    child:
+                        Image.asset('assets/images/blue_can.png', scale: 3.8))
+                : Image.asset('assets/images/blue_can.png', scale: 3.8),
           );
         },
       ),
       const SizedBox(height: 10),
-      const Text("Difficile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white))
+      const Text("Difficile",
+          style: TextStyle(
+              fontFamily: 'SansSerif', fontSize: 10, color: Colors.black))
     ]);
   }
 }
-
-
 
 class GreenCan extends StatefulWidget {
   const GreenCan({super.key});
@@ -108,13 +125,15 @@ class GreenCan extends StatefulWidget {
   State<GreenCan> createState() => _GreenCanState();
 }
 
-class _GreenCanState extends State<GreenCan> with SingleTickerProviderStateMixin {
+class _GreenCanState extends State<GreenCan>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
   }
 
   @override
@@ -125,17 +144,13 @@ class _GreenCanState extends State<GreenCan> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    AudioPlayer player = AudioPlayer();
-    final song = AssetSource("sound/button.mp3");
-    player.setVolume(0.2);
-    player.setSource(song);
-    return Column( children: <Widget>[
+    return Column(children: <Widget>[
       AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
           return GestureDetector(
             onTap: () {
-              player.play(song);
+              GlobalData.buttonPlayer.play(GlobalData.buttonSound);
               setState(() {
                 GlobalData.diff2 = !GlobalData.diff2;
                 if (GlobalData.diff2) {
@@ -148,19 +163,27 @@ class _GreenCanState extends State<GreenCan> with SingleTickerProviderStateMixin
               GlobalData.diff1 = false;
               GlobalData.diff3 = false;
             },
-            child: GlobalData.diff2 ? Animator(builder: (context, animatorState, child) {
-              return Transform.rotate(
-                angle: 180,
-                child: child,
-              );
-            }, duration: const Duration(seconds: 1), cycles: 1, curve: Curves.easeInOut,
-                child : Image.asset('assets/images/green_can.png', scale: 3.8))
-                : Image.asset('assets/images/green_can.png', scale : 3.8),
+            child: GlobalData.diff2
+                ? Animator(
+                    builder: (context, animatorState, child) {
+                      return Transform.rotate(
+                        angle: 180,
+                        child: child,
+                      );
+                    },
+                    duration: const Duration(seconds: 1),
+                    cycles: 1,
+                    curve: Curves.easeInOut,
+                    child:
+                        Image.asset('assets/images/green_can.png', scale: 3.8))
+                : Image.asset('assets/images/green_can.png', scale: 3.8),
           );
         },
       ),
       const SizedBox(height: 10),
-      const Text("Moyen", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),
+      const Text("Moyen",
+          style: TextStyle(
+              fontFamily: 'SansSerif', fontSize: 10, color: Colors.black)),
     ]);
   }
 }
@@ -178,7 +201,8 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
   }
 
   @override
@@ -189,17 +213,13 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    AudioPlayer player = AudioPlayer();
-    final song = AssetSource("sound/button.mp3");
-    player.setVolume(0.2);
-    player.setSource(song);
-    return Column( children: <Widget>[
+    return Column(children: <Widget>[
       AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
           return GestureDetector(
             onTap: () {
-              player.play(song);
+              GlobalData.buttonPlayer.play(GlobalData.buttonSound);
               setState(() {
                 GlobalData.diff3 = !GlobalData.diff3;
                 if (GlobalData.diff3) {
@@ -212,19 +232,26 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
               GlobalData.diff1 = false;
               GlobalData.diff2 = false;
             },
-            child: GlobalData.diff3 ? Animator(builder: (context, animatorState, child) {
-              return Transform.rotate(
-                angle: 180,
-                child: child,
-              );
-            }, duration: const Duration(seconds: 1), cycles: 1, curve: Curves.easeInOut,
-                child : Image.asset('assets/images/red_can.png', scale: 3.8))
-                : Image.asset('assets/images/red_can.png', scale : 3.8),
+            child: GlobalData.diff3
+                ? Animator(
+                    builder: (context, animatorState, child) {
+                      return Transform.rotate(
+                        angle: 180,
+                        child: child,
+                      );
+                    },
+                    duration: const Duration(seconds: 1),
+                    cycles: 1,
+                    curve: Curves.easeInOut,
+                    child: Image.asset('assets/images/red_can.png', scale: 3.8))
+                : Image.asset('assets/images/red_can.png', scale: 3.8),
           );
         },
       ),
       const SizedBox(height: 10),
-      const Text("Facile", style: TextStyle(fontFamily: 'SansSerif', fontSize: 10, color: Colors.white)),
+      const Text("Facile",
+          style: TextStyle(
+              fontFamily: 'SansSerif', fontSize: 10, color: Colors.black)),
     ]);
   }
 }

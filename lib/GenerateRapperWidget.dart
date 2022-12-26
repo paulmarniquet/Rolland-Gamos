@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,8 @@ class GlobalData {
   static bool diff2 = false;
   static bool diff3 = false;
   static TextEditingController controller = TextEditingController();
+  static AudioPlayer buttonPlayer = AudioPlayer();
+  static final buttonSound = AssetSource("sound/button.mp3");
 }
 
 class GenerateRapper extends StatefulWidget {
@@ -53,7 +56,7 @@ class _GenerateRapperState extends State<GenerateRapper> {
       const SizedBox(height: 50),
       Text(textFromFile,
           style: const TextStyle(
-              fontFamily: 'SansSerif', fontSize: 30, color: Colors.black87)),
+              fontFamily: 'SansSerif', fontSize: 40, color: Colors.black87)),
     ]);
   }
 }

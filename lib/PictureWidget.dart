@@ -16,14 +16,13 @@ class PictureWidget extends StatefulWidget {
 }
 
 class _PictureWidgetState extends State<PictureWidget> {
-
   final spotifyApi = spotifyPackage.SpotifyApi(credentials);
   String id = '';
-  Future <String?> getPicture() async {
+  Future<String?> getPicture() async {
     var search = await spotifyApi.search
         .get(GlobalData.rapname, types: [SearchType.artist], market: "FR")
         .first(1)
-    // ignore: avoid_print, invalid_return_type_for_catch_error
+        // ignore: avoid_print, invalid_return_type_for_catch_error
         .catchError((err) => print((err as SpotifyException).message));
 
     for (var pages in search) {
@@ -34,9 +33,8 @@ class _PictureWidgetState extends State<PictureWidget> {
       }
     }
     var artiste = await spotifyApi.artists.get(id);
-    return(artiste.images![0].url);
+    return (artiste.images![0].url);
   }
-
 
   @override
   Widget build(BuildContext context) {

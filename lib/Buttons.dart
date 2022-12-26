@@ -2,27 +2,21 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:featurine/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Options.dart';
-import 'Game.dart';
 
 class Play extends StatelessWidget {
   const Play({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AudioPlayer player = AudioPlayer();
-    final song = AssetSource("sound/button.mp3");
-    player.setVolume(0.2);
-    player.setSource(song);
+    GlobalData.buttonPlayer.setVolume(0.2);
     return Container(
-        margin: const EdgeInsets.fromLTRB(0, 0, 50, 0),
+        margin: const EdgeInsets.fromLTRB(0, 70, 0, 0),
         child: GestureDetector(
             onTap: () {
-              player.play(song);
-              Navigator.push(context, PlayPage(GlobalData.rapname));
+              GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+              Navigator.push(context, OptionsPage());
             },
-            child: Image.asset(
-                "assets/images/jouerbutton.png",
-                scale: 2.5)));
+            child: Image.asset("assets/images/jouerbutton.png", scale: 2.5)));
   }
 }
 
@@ -37,9 +31,7 @@ class Options extends StatelessWidget {
             onTap: () {
               Navigator.push(context, OptionsPage());
             },
-            child: Image.asset(
-                "assets/images/niveaubutton.png",
-                scale: 2.8)));
+            child: Image.asset("assets/images/niveaubutton.png", scale: 2.8)));
   }
 }
 

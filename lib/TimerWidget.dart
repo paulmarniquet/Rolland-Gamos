@@ -3,7 +3,6 @@ import 'package:featurine/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Menu.dart';
 
-
 class TimerWidget extends StatefulWidget {
   const TimerWidget({super.key});
   @override
@@ -11,12 +10,10 @@ class TimerWidget extends StatefulWidget {
 }
 
 class _TimerWidgetState extends State<TimerWidget> {
-
   int timeLeft = 60;
   int timeOnPage = 0;
   bool launched = false;
   bool newGame = false;
-
 
   void check_difficulty() {
     if (GlobalData.difficulty == 1 && !launched) {
@@ -62,7 +59,8 @@ class _TimerWidgetState extends State<TimerWidget> {
     GlobalData.rappers.clear();
     launched = false;
     newGame = true;
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Menu()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Menu()));
     alertDialog();
   }
 
