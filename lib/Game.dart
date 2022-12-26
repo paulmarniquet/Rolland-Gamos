@@ -67,7 +67,7 @@ class PlayPage extends MaterialPageRoute<void> {
                       GlobalData.rapname = formatInput(GlobalData.rapname);
                       GlobalData.rappers.add(GlobalData.rapname);
                       GlobalData.controller.clear();
-                      Navigator.push(context, PlayPage(GlobalData.rapname));
+                      Navigator.pushReplacement(context, PlayPage(GlobalData.rapname));
                     } else {
                       GlobalData.controller.clear();
                       ScaffoldMessenger.of(context).showSnackBar(

@@ -10,7 +10,6 @@ class TimerWidget extends StatefulWidget {
   _TimerWidgetState createState() => _TimerWidgetState();
 }
 
-
 class _TimerWidgetState extends State<TimerWidget> {
 
   int timeLeft = 60;
@@ -41,6 +40,7 @@ class _TimerWidgetState extends State<TimerWidget> {
       } else {
         setState(() {
           timer.cancel();
+          resetGame();
         });
       }
     });
@@ -55,23 +55,15 @@ class _TimerWidgetState extends State<TimerWidget> {
     });
   }
 
-  void checkTime() {
-    Timer.periodic(const Duration(milliseconds: 1), (timer) {
-      if (timeLeft == 0 && !newGame) {
-        resetGame();
-      }
-    });
-  }
-
   void resetGame() {
-        GlobalData.rapname = "";
-        GlobalData.difficulty = 1;
-        GlobalData.score = 0;
-        GlobalData.controller.clear();
-        launched = false;
-        newGame = true;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const Menu()));
-        alertDialog();
+    GlobalData.rapname = "";
+    GlobalData.score = 0;
+    GlobalData.controller.clear();
+    GlobalData.rappers.clear();
+    launched = false;
+    newGame = true;
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const Menu()));
+    alertDialog();
   }
 
   void alertDialog() {
@@ -98,7 +90,6 @@ class _TimerWidgetState extends State<TimerWidget> {
   Widget build(BuildContext context) {
     check_difficulty();
     timeOnPageFunc();
-    checkTime();
     return Column(children: [
       Text(
         timeLeft == 0 ? 'Loser' : timeLeft.toString(),
