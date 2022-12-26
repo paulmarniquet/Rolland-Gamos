@@ -21,7 +21,7 @@ class GlobalData {
 class GenerateRapper extends StatefulWidget {
   const GenerateRapper({super.key});
   @override
-  _GenerateRapperState createState() => _GenerateRapperState();
+  State<GenerateRapper> createState() => _GenerateRapperState();
 }
 
 class _GenerateRapperState extends State<GenerateRapper> {

@@ -6,7 +6,7 @@ import 'Menu.dart';
 class TimerWidget extends StatefulWidget {
   const TimerWidget({super.key});
   @override
-  _TimerWidgetState createState() => _TimerWidgetState();
+  State<TimerWidget> createState() => _TimerWidgetState();
 }
 
 class _TimerWidgetState extends State<TimerWidget> {
@@ -15,7 +15,7 @@ class _TimerWidgetState extends State<TimerWidget> {
   bool launched = false;
   bool newGame = false;
 
-  void check_difficulty() {
+  void checkDifficulty() {
     if (GlobalData.difficulty == 1 && !launched) {
       timeLeft = 30;
       launched = true;
@@ -86,7 +86,7 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    check_difficulty();
+    checkDifficulty();
     timeOnPageFunc();
     return Column(children: [
       Text(

@@ -1,9 +1,7 @@
 import 'package:animator/animator.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'Game.dart';
 import 'GenerateRapperWidget.dart';
-import 'Buttons.dart';
 
 class OptionsPage extends MaterialPageRoute<void> {
   OptionsPage()
@@ -34,8 +32,7 @@ class OptionsPage extends MaterialPageRoute<void> {
                 },
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(170, 50),
-                  primary: Colors.white,
-                  onPrimary: Colors.black,
+                  backgroundColor: const Color.fromARGB(255, 250, 226, 120),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),

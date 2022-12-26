@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:featurine/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Options.dart';
