@@ -5,7 +5,6 @@ import 'PictureWidget.dart';
 import 'TimerWidget.dart';
 import 'GenerateRapperWidget.dart';
 
-
 AudioPlayer falseResponse = AudioPlayer();
 final falseSound = AssetSource("sound/incorrect.mp3");
 AudioPlayer validResponse = AudioPlayer();
@@ -88,26 +87,30 @@ class PlayPage extends MaterialPageRoute<void> {
                               width: 300,
                               child: TextField(
                                 decoration: InputDecoration(
-                                  suffixIcon: IconButton(onPressed: (() async {
-                                bool featured = await getText();
-                                if (featured == true &&
-                                !checkRapperName(formatInput(
-                                GlobalData.controller.text))) {
-                                validResponse.play(validSound);
-                                scoreDiff();
-                                GlobalData.rapname = GlobalData.controller.text;
-                                GlobalData.rapname =
-                                formatInput(GlobalData.rapname);
-                                GlobalData.rappers.add(GlobalData.rapname);
-                                GlobalData.controller.clear();
-                                Navigator.pushReplacement(
-                                context, PlayPage(GlobalData.rapname));
-                                } else {
-                                falseResponse.play(falseSound);
-                                GlobalData.controller.clear();
-                                }
-                                }),
-                                      icon: const Icon(Icons.check)),
+                                    suffixIcon: IconButton(
+                                        onPressed: (() async {
+                                          bool featured = await getText();
+                                          if (featured == true &&
+                                              !checkRapperName(formatInput(
+                                                  GlobalData
+                                                      .controller.text))) {
+                                            validResponse.play(validSound);
+                                            scoreDiff();
+                                            GlobalData.rapname =
+                                                GlobalData.controller.text;
+                                            GlobalData.rapname =
+                                                formatInput(GlobalData.rapname);
+                                            GlobalData.rappers
+                                                .add(GlobalData.rapname);
+                                            GlobalData.controller.clear();
+                                            Navigator.pushReplacement(context,
+                                                PlayPage(GlobalData.rapname));
+                                          } else {
+                                            falseResponse.play(falseSound);
+                                            GlobalData.controller.clear();
+                                          }
+                                        }),
+                                        icon: const Icon(Icons.check)),
                                     border: const OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(30.0))),
@@ -116,11 +119,13 @@ class PlayPage extends MaterialPageRoute<void> {
                                 controller: GlobalData.controller,
                               )),
                           const SizedBox(height: 100),
-                              Text("Score : ${GlobalData.score}",
-                                  style: const TextStyle(fontFamily: 'SansSerif2',
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.black)),
+                          Text(GlobalData.score.toString(),
+                              style: const TextStyle(
+                                  fontFamily: 'Mont22',
+                                  letterSpacing: 5,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black)),
                         ])),
                       ))));
         });

@@ -1,13 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:flutter/services.dart';
-
 import 'Buttons.dart';
 import 'package:flutter/material.dart';
 import 'GenerateRapperWidget.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
 getData() async {
   String response;
@@ -23,9 +20,7 @@ Widget buildRapperText(List<String> rappers) {
         stream: Stream.periodic(const Duration(milliseconds: 200)),
         builder: (context, snapshot) {
           return GestureDetector(
-            onTap: () {
-              return getData();
-            },
+            onTap: () {null;},
             child: Text(rappers[Random().nextInt(rappers.length)],
                 style: const TextStyle(
                     fontSize: 40,
@@ -65,7 +60,7 @@ class Menu extends StatelessWidget {
                     GenerateRapper(),
                     SizedBox(height: 60),
                     Play(),
-                    SizedBox(height: 140),
+                    SizedBox(height: 90),
                     musicLogo(),
                   ]),
                 ),

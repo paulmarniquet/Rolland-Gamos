@@ -54,9 +54,7 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   void resetGame() {
     GlobalData.rapname = "";
-    GlobalData.score = 0;
     GlobalData.controller.clear();
-    GlobalData.rappers.clear();
     launched = false;
     newGame = true;
     Navigator.push(
@@ -69,12 +67,28 @@ class _TimerWidgetState extends State<TimerWidget> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Time's up!"),
-          content: const Text("T'as plus de temps !"),
+          backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
+          title: Image.asset("assets/images/logo.png", height: 70,
+          alignment: Alignment.topCenter),
+          content: GlobalData.score == 0 ?
+              const Text("Ton score est de : 0\n\nT'es finito..",
+                  style: TextStyle(
+                    fontFamily: "Mont22",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 15)) :
+          Text("Ton score est de : ${GlobalData.score}"
+              "\n\nTu as trouvé ${GlobalData.rappers.length-1} rappeur(s)",
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 15)),
           actions: [
             TextButton(
               child: const Text("Recommence"),
               onPressed: () {
+                GlobalData.score = 0;
+                GlobalData.rappers.clear();
+                GlobalData.buttonPlayer.play(GlobalData.buttonSound);
                 Navigator.of(context).pop();
               },
             ),

@@ -12,7 +12,7 @@ class GlobalData {
   static String rapname = "";
   static int difficulty = 1;
   static int score = 0;
-  static List<String> randomRappersAni = ["Laylow", "Nekfeu", "Lesram"];
+  static List<String> randomRappersAni = [];
   static List<String> rappers = [];
   static bool diff1 = false;
   static bool diff2 = false;
@@ -37,7 +37,6 @@ class _GenerateRapperState extends State<GenerateRapper> {
     String response;
     response = await rootBundle.loadString('assets/database');
     LineSplitter.split(response).forEach((line) => (array.add(line)));
-    GlobalData.randomRappersAni = array;
     setState(() {
       textFromFile = array[Random().nextInt(array.length)];
       GlobalData.rapname = textFromFile;
@@ -63,20 +62,12 @@ class _GenerateRapperState extends State<GenerateRapper> {
       StreamBuilder(
         stream: timeStream,
         builder: (context, snapshot) {
-          return GestureDetector(
-            onTap: () {
-                Text(textFromFile,
-                  style: const TextStyle(
-                      fontFamily: 'SansSerif', fontSize: 40, color: Colors.black87));
-                print(textFromFile);
-            },
-            child: Text(GlobalData.randomRappersAni[Random().nextInt(GlobalData.randomRappersAni.length)],
+          return Text(GlobalData.randomRappersAni[Random().nextInt(GlobalData.randomRappersAni.length)],
                 style: const TextStyle(
-                    fontSize: 40,
+                    fontSize: 42,
                     fontFamily: 'SansSerif',
                     fontWeight: FontWeight.bold,
-                    color: Colors.white)),
-          );
+                    color: Colors.white));
         },
       ),
     ]);

@@ -15,7 +15,7 @@ class Play extends StatelessWidget {
               GlobalData.buttonPlayer.play(GlobalData.buttonSound);
               Navigator.push(context, OptionsPage());
             },
-            child: Image.asset("assets/images/jouerbutton.png", scale: 2.5)));
+            child: Image.asset("assets/images/unknown.png", scale: 2.5)));
   }
 }
 

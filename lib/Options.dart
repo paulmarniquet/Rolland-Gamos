@@ -115,7 +115,7 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
       const SizedBox(height: 10),
       const Text("Difficile",
           style: TextStyle(
-              fontFamily: 'SansSerif', fontSize: 10, color: Colors.black))
+              fontFamily: 'Cool', fontSize: 15, color: Colors.black))
     ]);
   }
 }
@@ -185,7 +185,7 @@ class _GreenCanState extends State<GreenCan>
       const SizedBox(height: 10),
       const Text("Moyen",
           style: TextStyle(
-              fontFamily: 'SansSerif', fontSize: 10, color: Colors.black)),
+              fontFamily: 'Cool', fontSize: 15, color: Colors.black)),
     ]);
   }
 }
@@ -253,7 +253,7 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
       const SizedBox(height: 10),
       const Text("Facile",
           style: TextStyle(
-              fontFamily: 'SansSerif', fontSize: 10, color: Colors.black)),
+              fontFamily: 'Cool', fontSize: 15, color: Colors.black)),
     ]);
   }
 }

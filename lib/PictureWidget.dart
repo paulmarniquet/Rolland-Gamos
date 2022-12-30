@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/image.dart' as image;
 import 'package:spotify/spotify.dart' as spotifyPackage;
 import 'package:spotify/spotify.dart';
 import 'GenerateRapperWidget.dart';

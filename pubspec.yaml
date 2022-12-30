@@ -73,6 +73,14 @@ flutter:
       fonts:
         - asset: assets/fonts/SansSerifExbFLF.otf
 
+    - family: Cool
+      fonts:
+        - asset: assets/fonts/coolvetica.otf
+
+    - family: Mont22
+      fonts:
+        - asset: assets/fonts/Mont22.otf
+
     - family: Thin
       fonts:
         - asset: assets/fonts/SansSerifFLF.otf
