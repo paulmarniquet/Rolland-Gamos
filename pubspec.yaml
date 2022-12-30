@@ -39,6 +39,8 @@ dependencies:
   web_scraper: ^0.1.4
   animator: ^3.2.0
   audioplayers: ^1.1.1
+  animated_text_kit: ^4.2.2
+  multiple_stream_builder: ^3.0.0
 
 dev_dependencies:
   flutter_test:

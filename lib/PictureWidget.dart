@@ -42,8 +42,13 @@ class _PictureWidgetState extends State<PictureWidget> {
         future: getPicture(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return image.Image.network(snapshot.data.toString(),
-                width: 175, height: 175);
+            return Container(
+                width: 175,
+                height: 175,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.fill, image: NetworkImage(snapshot.data!))));
           } else {
             return const CircularProgressIndicator();
           }

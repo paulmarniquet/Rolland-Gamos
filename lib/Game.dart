@@ -1,8 +1,15 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:featurine/Algorithm.dart';
 import 'package:flutter/material.dart';
 import 'PictureWidget.dart';
 import 'TimerWidget.dart';
 import 'GenerateRapperWidget.dart';
+
+
+AudioPlayer falseResponse = AudioPlayer();
+final falseSound = AssetSource("sound/incorrect.mp3");
+AudioPlayer validResponse = AudioPlayer();
+final validSound = AssetSource("sound/correct.mp3");
 
 void scoreDiff() {
   if (GlobalData.difficulty == 1) {
@@ -26,15 +33,17 @@ bool checkRapperName(String name) {
 class PlayPage extends MaterialPageRoute<void> {
   PlayPage(rapname)
       : super(builder: (BuildContext context) {
-          GlobalData.buttonPlayer.setVolume(0.2);
-          GlobalData.buttonPlayer.setSource(GlobalData.buttonSound);
+          validResponse.setVolume(0.1);
+          validResponse.setSource(validSound);
+          falseResponse.setVolume(0.2);
+          falseResponse.setSource(falseSound);
           MainAxisAlignment.start;
           return WillPopScope(
               onWillPop: () async => false,
               child: GestureDetector(
                   onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
                   child: Scaffold(
-                      //backgroundColor: const Color.fromARGB(255, 250, 226, 120),
+                      backgroundColor: Colors.white,
                       body: SingleChildScrollView(
                         child: Center(
                             child: Column(children: <Widget>[
@@ -46,56 +55,72 @@ class PlayPage extends MaterialPageRoute<void> {
                               height: 250,
                               child: Column(children: [
                                 const PictureWidget(),
-                                const SizedBox(height: 20),
-                                Text(GlobalData.rapname,
-                                    style: const TextStyle(
-                                        fontFamily: 'SansSerif2')),
+                                Container(
+                                    width: GlobalData.rapname.length > 10
+                                        ? 200
+                                        : 150,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.2),
+                                              spreadRadius: 2,
+                                              blurRadius: 5,
+                                              offset: const Offset(0, 9))
+                                        ]),
+                                    child: Center(
+                                        child: Text(GlobalData.rapname,
+                                            style: TextStyle(
+                                                fontSize:
+                                                    GlobalData.rapname.length >
+                                                            10
+                                                        ? 17
+                                                        : 20,
+                                                fontFamily: 'SansSerif2',
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black)))),
                               ])),
                           const SizedBox(height: 20),
                           SizedBox(
                               width: 300,
                               child: TextField(
-                                decoration: const InputDecoration(
-                                    border: OutlineInputBorder(
+                                decoration: InputDecoration(
+                                  suffixIcon: IconButton(onPressed: (() async {
+                                bool featured = await getText();
+                                if (featured == true &&
+                                !checkRapperName(formatInput(
+                                GlobalData.controller.text))) {
+                                validResponse.play(validSound);
+                                scoreDiff();
+                                GlobalData.rapname = GlobalData.controller.text;
+                                GlobalData.rapname =
+                                formatInput(GlobalData.rapname);
+                                GlobalData.rappers.add(GlobalData.rapname);
+                                GlobalData.controller.clear();
+                                Navigator.pushReplacement(
+                                context, PlayPage(GlobalData.rapname));
+                                } else {
+                                falseResponse.play(falseSound);
+                                GlobalData.controller.clear();
+                                }
+                                }),
+                                      icon: const Icon(Icons.check)),
+                                    border: const OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(30.0))),
                                     filled: true,
                                     fillColor: Colors.white70),
                                 controller: GlobalData.controller,
                               )),
-                          const SizedBox(height: 50),
-                          Text(GlobalData.score.toString(),
-                              style: const TextStyle(fontFamily: 'SansSerif2')),
-                          TextButton(
-                            onPressed: (() async {
-                              bool featured = await getText();
-                              if (featured == true &&
-                                  !checkRapperName(formatInput(
-                                      GlobalData.controller.text))) {
-                                GlobalData.buttonPlayer
-                                    .play(GlobalData.buttonSound);
-                                scoreDiff();
-                                GlobalData.rapname = GlobalData.controller.text;
-                                GlobalData.rapname =
-                                    formatInput(GlobalData.rapname);
-                                GlobalData.rappers.add(GlobalData.rapname);
-                                GlobalData.controller.clear();
-                                Navigator.pushReplacement(
-                                    context, PlayPage(GlobalData.rapname));
-                              } else {
-                                GlobalData.controller.clear();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Not featured'),
-                                  ),
-                                );
-                              }
-                            }),
-                            style: TextButton.styleFrom(
-                              backgroundColor: Colors.black,
-                            ),
-                            child: const Text("Envoie"),
-                          ),
+                          const SizedBox(height: 100),
+                              Text("Score : ${GlobalData.score}",
+                                  style: const TextStyle(fontFamily: 'SansSerif2',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
                         ])),
                       ))));
         });

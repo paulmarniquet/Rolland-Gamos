@@ -90,7 +90,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     timeOnPageFunc();
     return Column(children: [
       Text(
-        timeLeft == 0 ? 'Loser' : timeLeft.toString(),
+        timeLeft.toString(),
         style: const TextStyle(fontSize: 70, fontFamily: 'SemiThin'),
       ),
     ]);

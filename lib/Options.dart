@@ -27,8 +27,7 @@ class OptionsPage extends MaterialPageRoute<void> {
               const SizedBox(height: 100),
               ElevatedButton(
                 onPressed: () {
-                  GlobalData.buttonPlayer.play(GlobalData.buttonSound);
-                  Navigator.push(context, PlayPage(GlobalData.rapname));
+                  null;
                 },
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(170, 50),
@@ -37,7 +36,13 @@ class OptionsPage extends MaterialPageRoute<void> {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
-                child: const Text("LESGO!"),
+                child: IconButton(
+                  icon: Icon(Icons.arrow_forward_outlined, color: Colors.black),
+                  onPressed: () {
+                    GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+                    Navigator.push(context, PlayPage(GlobalData.rapname));
+                  },
+                ),
               ),
               const SizedBox(height: 60),
             ])),
