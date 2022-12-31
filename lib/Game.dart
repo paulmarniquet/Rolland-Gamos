@@ -1,5 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:featurine/Algorithm.dart';
+import 'package:Roland_Gamos/Algorithm.dart';
 import 'package:flutter/material.dart';
 import 'PictureWidget.dart';
 import 'TimerWidget.dart';

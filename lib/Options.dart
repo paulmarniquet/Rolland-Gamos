@@ -65,7 +65,7 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 1));
   }
 
   @override
@@ -103,7 +103,7 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
                         child: child,
                       );
                     },
-                    duration: const Duration(seconds: 1),
+                    duration: const Duration(milliseconds: 1),
                     cycles: 1,
                     curve: Curves.easeInOut,
                     child:
@@ -135,7 +135,7 @@ class _GreenCanState extends State<GreenCan>
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 1));
   }
 
   @override
@@ -173,7 +173,7 @@ class _GreenCanState extends State<GreenCan>
                         child: child,
                       );
                     },
-                    duration: const Duration(seconds: 1),
+                    duration: const Duration(milliseconds: 1),
                     cycles: 1,
                     curve: Curves.easeInOut,
                     child:
@@ -204,7 +204,7 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 1));
   }
 
   @override
@@ -242,7 +242,7 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
                         child: child,
                       );
                     },
-                    duration: const Duration(seconds: 1),
+                    duration: const Duration(milliseconds: 1),
                     cycles: 1,
                     curve: Curves.easeInOut,
                     child: Image.asset('assets/images/red_can.png', scale: 3.8))

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:featurine/GenerateRapperWidget.dart';
+import 'package:Roland_Gamos/GenerateRapperWidget.dart';
 import 'PictureWidget.dart';
 import 'package:spotify/spotify.dart' as spotifyPackage;
 import 'package:spotify/spotify.dart';

@@ -1,4 +1,4 @@
-package com.example.featurine
+package com.example.Roland_Gamos
 
 import io.flutter.embedding.android.FlutterActivity
 

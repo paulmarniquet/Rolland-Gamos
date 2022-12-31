@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:featurine/GenerateRapperWidget.dart';
+import 'package:Roland_Gamos/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Menu.dart';
 
@@ -71,13 +71,13 @@ class _TimerWidgetState extends State<TimerWidget> {
           title: Image.asset("assets/images/logo.png", height: 70,
           alignment: Alignment.topCenter),
           content: GlobalData.score == 0 ?
-              const Text("Ton score est de : 0\n\nT'es finito..",
+              const Text("Score : 0\n\nT'es finito..",
                   style: TextStyle(
                     fontFamily: "Mont22",
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                       fontSize: 15)) :
-          Text("Ton score est de : ${GlobalData.score}"
+          Text("Score : ${GlobalData.score}"
               "\n\nTu as trouvé ${GlobalData.rappers.length-1} rappeur(s)",
               style: const TextStyle(
                   color: Colors.black,

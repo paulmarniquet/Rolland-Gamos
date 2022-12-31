@@ -1,4 +1,4 @@
-import 'package:featurine/GenerateRapperWidget.dart';
+import 'GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Options.dart';
 
@@ -15,7 +15,8 @@ class Play extends StatelessWidget {
               GlobalData.buttonPlayer.play(GlobalData.buttonSound);
               Navigator.push(context, OptionsPage());
             },
-            child: Image.asset("assets/images/unknown.png", scale: 2.5)));
+            child: Image.asset("assets/images/unknown.png", scale: 2.5)
+        ));
   }
 }
 
