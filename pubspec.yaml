@@ -89,6 +89,10 @@ flutter:
       fonts:
         - asset: assets/fonts/SansSerifFLF-Demibold.otf
 
+    - family: Couture
+      fonts:
+        - asset: assets/fonts/couture.otf
+
   assets:
     - assets/images/
     - assets/database

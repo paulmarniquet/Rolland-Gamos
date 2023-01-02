@@ -37,7 +37,7 @@ class OptionsPage extends MaterialPageRoute<void> {
                   ),
                 ),
                 child: IconButton(
-                  icon: Icon(Icons.arrow_forward_outlined, color: Colors.black),
+                  icon: const Icon(Icons.arrow_forward_outlined, color: Colors.black),
                   onPressed: () {
                     GlobalData.buttonPlayer.play(GlobalData.buttonSound);
                     Navigator.push(context, PlayPage(GlobalData.rapname));
@@ -65,7 +65,7 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 1));
+        AnimationController(vsync: this, duration: const Duration(seconds: 900));
   }
 
   @override
@@ -85,6 +85,8 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
               GlobalData.buttonPlayer.play(GlobalData.buttonSound);
               setState(() {
                 GlobalData.diff1 = !GlobalData.diff1;
+                GlobalData.diff2 = false;
+                GlobalData.diff3 = false;
                 if (GlobalData.diff1) {
                   _animationController.forward();
                 } else {
@@ -92,8 +94,6 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
                 }
               });
               GlobalData.difficulty = 1;
-              GlobalData.diff2 = false;
-              GlobalData.diff3 = false;
             },
             child: GlobalData.diff1
                 ? Animator(
@@ -135,7 +135,7 @@ class _GreenCanState extends State<GreenCan>
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 1));
+        AnimationController(vsync: this, duration: const Duration(seconds: 900));
   }
 
   @override
@@ -154,7 +154,9 @@ class _GreenCanState extends State<GreenCan>
             onTap: () {
               GlobalData.buttonPlayer.play(GlobalData.buttonSound);
               setState(() {
+                GlobalData.diff1 = false;
                 GlobalData.diff2 = !GlobalData.diff2;
+                GlobalData.diff3 = false;
                 if (GlobalData.diff2) {
                   _animationController.forward();
                 } else {
@@ -162,8 +164,6 @@ class _GreenCanState extends State<GreenCan>
                 }
               });
               GlobalData.difficulty = 2;
-              GlobalData.diff1 = false;
-              GlobalData.diff3 = false;
             },
             child: GlobalData.diff2
                 ? Animator(
@@ -204,7 +204,7 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 1));
+        AnimationController(vsync: this, duration: const Duration(seconds: 900));
   }
 
   @override
@@ -223,6 +223,8 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
             onTap: () {
               GlobalData.buttonPlayer.play(GlobalData.buttonSound);
               setState(() {
+                GlobalData.diff1 = false;
+                GlobalData.diff2 = false;
                 GlobalData.diff3 = !GlobalData.diff3;
                 if (GlobalData.diff3) {
                   _animationController.forward();
@@ -231,8 +233,6 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
                 }
               });
               GlobalData.difficulty = 3;
-              GlobalData.diff1 = false;
-              GlobalData.diff2 = false;
             },
             child: GlobalData.diff3
                 ? Animator(

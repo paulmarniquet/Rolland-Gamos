@@ -46,6 +46,7 @@ class Menu extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/background.gif'),
+            opacity: 0.4,
             fit: BoxFit.cover,
           ),
         ),
@@ -61,7 +62,6 @@ class Menu extends StatelessWidget {
                     SizedBox(height: 60),
                     Play(),
                     SizedBox(height: 90),
-                    musicLogo(),
                   ]),
                 ),
               ),

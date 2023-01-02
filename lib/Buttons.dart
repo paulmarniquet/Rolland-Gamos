@@ -1,24 +1,46 @@
+import 'package:animator/animator.dart';
+
 import 'GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Options.dart';
 
-class Play extends StatelessWidget {
-  const Play({super.key});
+class Play extends StatefulWidget {
+  const Play() : super(key: null);
+
+  @override
+  _PlayState createState() => _PlayState();
+}
+
+class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    AnimationController animationController = AnimationController(
+        vsync: this, value: 1.2, duration: const Duration(milliseconds: 1000));
     GlobalData.buttonPlayer.setVolume(0.2);
     return Container(
         margin: const EdgeInsets.fromLTRB(0, 70, 0, 0),
         child: GestureDetector(
-            onTap: () {
-              GlobalData.buttonPlayer.play(GlobalData.buttonSound);
-              Navigator.push(context, OptionsPage());
+          onTap: () {
+            GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+            Navigator.push(context, OptionsPage());
+          },
+          child: Animator(
+            cycles: 100000,
+            tween: Tween<double>(begin: 1.2, end: 1.0),
+            duration: const Duration(seconds: 1),
+            curve: Curves.easeInOut,
+            builder: (context, animatorState, child) {
+              return Transform.scale(
+                scale: animatorState.value,
+                child: Image.asset('assets/images/unknown.png', scale: 3),
+              );
             },
-            child: Image.asset("assets/images/unknown.png", scale: 2.5)
+          ),
         ));
   }
 }
+
 
 class Options extends StatelessWidget {
   const Options({super.key});

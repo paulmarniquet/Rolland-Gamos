@@ -3,6 +3,12 @@ import 'package:Roland_Gamos/GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Menu.dart';
 
+TextStyle textStyle = const TextStyle(
+    fontFamily: "Montserrat",
+    fontWeight: FontWeight.w500,
+    color: Colors.black87,
+    fontSize: 20);
+
 class TimerWidget extends StatefulWidget {
   const TimerWidget({super.key});
   @override
@@ -66,31 +72,48 @@ class _TimerWidgetState extends State<TimerWidget> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
-          title: Image.asset("assets/images/logo.png", height: 70,
-          alignment: Alignment.topCenter),
-          content: GlobalData.score == 0 ?
-              const Text("Score : 0\n\nT'es finito..",
-                  style: TextStyle(
-                    fontFamily: "Mont22",
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 15)) :
-          Text("Score : ${GlobalData.score}"
-              "\n\nTu as trouvé ${GlobalData.rappers.length-1} rappeur(s)",
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 15)),
-          actions: [
-            TextButton(
-              child: const Text("Recommence"),
-              onPressed: () {
-                GlobalData.score = 0;
-                GlobalData.rappers.clear();
-                GlobalData.buttonPlayer.play(GlobalData.buttonSound);
-                Navigator.of(context).pop();
-              },
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            AlertDialog(
+              shape: ShapeBorder.lerp(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  1),
+              title: const Text(""),
+              backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
+              content: GlobalData.score == 0
+                  ? Text("Score : 0\n\nT'es finito..",
+                      style: textStyle,
+                      textAlign: TextAlign.center)
+                  : GlobalData.score == 1
+                      ? Text(
+                          "Score : ${GlobalData.score}"
+                          "\n\nTu as trouvé ${GlobalData.rappers.length - 1} rappeur",
+                          style: textStyle,
+                          textAlign: TextAlign.center)
+                      : Text(
+                          "Score : ${GlobalData.score}"
+                          "\n\nTu as trouvé ${GlobalData.rappers.length - 1} rappeurs",
+                          style: textStyle,
+                          textAlign: TextAlign.center),
+              actions: [
+                TextButton(
+                  child: const Text("Recommence"),
+                  onPressed: () {
+                    GlobalData.score = 0;
+                    GlobalData.rappers.clear();
+                    GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+            Positioned(
+              top: 220,
+              child: Image.asset('assets/images/logo.png', height: 70),
             ),
           ],
         );
