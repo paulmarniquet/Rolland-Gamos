@@ -1,12 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:multiple_stream_builder/multiple_stream_builder.dart';
-
 
 class GlobalData {
   static String rapname = "";
@@ -62,12 +59,14 @@ class _GenerateRapperState extends State<GenerateRapper> {
       StreamBuilder(
         stream: timeStream,
         builder: (context, snapshot) {
-          return Text(GlobalData.randomRappersAni[Random().nextInt(GlobalData.randomRappersAni.length)],
-                style: const TextStyle(
-                    fontSize: 42,
-                    fontFamily: 'SansSerif',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white));
+          return Text(
+              GlobalData.randomRappersAni[
+                  Random().nextInt(GlobalData.randomRappersAni.length)],
+              style: const TextStyle(
+                  fontSize: 42,
+                  fontFamily: 'SansSerif',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white));
         },
       ),
     ]);

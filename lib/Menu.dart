@@ -9,9 +9,9 @@ import 'GenerateRapperWidget.dart';
 getData() async {
   String response;
   response = await rootBundle.loadString('assets/database');
-  LineSplitter.split(response).forEach((line) => (GlobalData.randomRappersAni.add(line)));
+  LineSplitter.split(response)
+      .forEach((line) => (GlobalData.randomRappersAni.add(line)));
 }
-
 
 Widget buildRapperText(List<String> rappers) {
   return Column(
@@ -20,7 +20,9 @@ Widget buildRapperText(List<String> rappers) {
         stream: Stream.periodic(const Duration(milliseconds: 200)),
         builder: (context, snapshot) {
           return GestureDetector(
-            onTap: () {null;},
+            onTap: () {
+              null;
+            },
             child: Text(rappers[Random().nextInt(rappers.length)],
                 style: const TextStyle(
                     fontSize: 40,

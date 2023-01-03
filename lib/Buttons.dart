@@ -1,5 +1,4 @@
 import 'package:animator/animator.dart';
-
 import 'GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
 import 'Options.dart';
@@ -12,11 +11,8 @@ class Play extends StatefulWidget {
 }
 
 class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
-
   @override
   Widget build(BuildContext context) {
-    AnimationController animationController = AnimationController(
-        vsync: this, value: 1.2, duration: const Duration(milliseconds: 1000));
     GlobalData.buttonPlayer.setVolume(0.2);
     return Container(
         margin: const EdgeInsets.fromLTRB(0, 70, 0, 0),
@@ -40,7 +36,6 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
         ));
   }
 }
-
 
 class Options extends StatelessWidget {
   const Options({super.key});

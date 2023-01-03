@@ -47,7 +47,8 @@ class _PictureWidgetState extends State<PictureWidget> {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        fit: BoxFit.fill, image: NetworkImage(snapshot.data!))));
+                        fit: BoxFit.fill,
+                        image: NetworkImage(snapshot.data!))));
           } else {
             return const CircularProgressIndicator();
           }

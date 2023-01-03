@@ -86,8 +86,7 @@ class _TimerWidgetState extends State<TimerWidget> {
               backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
               content: GlobalData.score == 0
                   ? Text("Score : 0\n\nT'es finito..",
-                      style: textStyle,
-                      textAlign: TextAlign.center)
+                      style: textStyle, textAlign: TextAlign.center)
                   : GlobalData.score == 1
                       ? Text(
                           "Score : ${GlobalData.score}"

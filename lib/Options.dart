@@ -1,4 +1,3 @@
-import 'package:Roland_Gamos/Algorithm.dart';
 import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
 import 'Game.dart';
@@ -20,9 +19,9 @@ class OptionsPage extends MaterialPageRoute<void> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
-                  BlueCan(),
-                  GreenCan(),
                   RedCan(),
+                  GreenCan(),
+                  BlueCan(),
                 ],
               ),
               const SizedBox(height: 100),
@@ -38,7 +37,8 @@ class OptionsPage extends MaterialPageRoute<void> {
                   ),
                 ),
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_forward_outlined, color: Colors.black),
+                  icon: const Icon(Icons.arrow_forward_outlined,
+                      color: Colors.black),
                   onPressed: () {
                     GlobalData.buttonPlayer.play(GlobalData.buttonSound);
                     Navigator.push(context, PlayPage(GlobalData.rapname));
@@ -65,8 +65,8 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 900));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(seconds: 900));
   }
 
   @override
@@ -115,8 +115,8 @@ class _BlueCanState extends State<BlueCan> with SingleTickerProviderStateMixin {
       ),
       const SizedBox(height: 10),
       const Text("Difficile",
-          style: TextStyle(
-              fontFamily: 'Cool', fontSize: 15, color: Colors.black))
+          style:
+              TextStyle(fontFamily: 'Cool', fontSize: 15, color: Colors.black))
     ]);
   }
 }
@@ -135,8 +135,8 @@ class _GreenCanState extends State<GreenCan>
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 900));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(seconds: 900));
   }
 
   @override
@@ -185,8 +185,8 @@ class _GreenCanState extends State<GreenCan>
       ),
       const SizedBox(height: 10),
       const Text("Moyen",
-          style: TextStyle(
-              fontFamily: 'Cool', fontSize: 15, color: Colors.black)),
+          style:
+              TextStyle(fontFamily: 'Cool', fontSize: 15, color: Colors.black)),
     ]);
   }
 }
@@ -204,8 +204,8 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 900));
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(seconds: 900));
   }
 
   @override
@@ -253,8 +253,8 @@ class _RedCanState extends State<RedCan> with SingleTickerProviderStateMixin {
       ),
       const SizedBox(height: 10),
       const Text("Facile",
-          style: TextStyle(
-              fontFamily: 'Cool', fontSize: 15, color: Colors.black)),
+          style:
+              TextStyle(fontFamily: 'Cool', fontSize: 15, color: Colors.black)),
     ]);
   }
 }
