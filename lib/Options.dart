@@ -1,3 +1,4 @@
+import 'package:Roland_Gamos/Algorithm.dart';
 import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
 import 'Game.dart';
