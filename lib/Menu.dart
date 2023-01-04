@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'Buttons.dart';
 import 'package:flutter/material.dart';
 import 'GenerateRapperWidget.dart';
+import 'Multiplayer.dart';
 
 getData() async {
   String response;
@@ -52,25 +53,20 @@ class Menu extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          children: [
-            Expanded(
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Center(
                   child: Column(children: const <Widget>[
                     SizedBox(height: 160),
                     GenerateRapper(),
-                    SizedBox(height: 60),
+                    Multiplayer(),
+                    SizedBox(height: 10),
                     Play(),
                     SizedBox(height: 90),
                   ]),
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }
