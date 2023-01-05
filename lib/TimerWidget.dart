@@ -37,7 +37,7 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   void startcountdown() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (timeLeft != 20) {
+      if (timeLeft != 0) {
         setState(() {
           timeLeft--;
         });
@@ -89,7 +89,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                   1),
               title: const Text(""),
               backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
-              content: Text("${players[GlobalData.player]} a perdu",
+              content: Text("${players[GlobalData.player]} a perdu !",
                   style: textStyle, textAlign: TextAlign.center),
               actions: [
                 TextButton(
