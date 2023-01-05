@@ -54,15 +54,15 @@ class Menu extends StatelessWidget {
           ),
         ),
               child: Scaffold(
+                resizeToAvoidBottomInset: false,
                 backgroundColor: Colors.transparent,
                 body: Center(
                   child: Column(children: const <Widget>[
-                    SizedBox(height: 160),
+                    SizedBox(height: 130),
                     GenerateRapper(),
                     Multiplayer(),
-                    SizedBox(height: 10),
+                    SizedBox(height: 30),
                     Play(),
-                    SizedBox(height: 90),
                   ]),
                 ),
               ),

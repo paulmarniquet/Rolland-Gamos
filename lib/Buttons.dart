@@ -1,3 +1,4 @@
+import 'package:Roland_Gamos/Multiplayer.dart';
 import 'package:animator/animator.dart';
 import 'GenerateRapperWidget.dart';
 import 'package:flutter/material.dart';
@@ -7,33 +8,78 @@ class Play extends StatefulWidget {
   const Play() : super(key: null);
 
   @override
-  _PlayState createState() => _PlayState();
+  State<Play> createState() => _PlayState();
 }
 
 class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
+
+  void _showDialogEmptyPlayers() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            AlertDialog(
+              shape: ShapeBorder.lerp(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  1),
+              title: const Text(""),
+              backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
+              content: const Text(
+                  "Entrez le nom d'un joueur",
+                  style: TextStyle(
+                      color: Color.fromRGBO(0, 0, 0, 1),
+                      fontSize: 20,
+                      fontFamily: "Roboto"),
+                  textAlign: TextAlign.center
+              ),
+              actions: [
+                TextButton(
+                  child: const Text("OK"),
+                  onPressed: () {
+                    GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+            Positioned(
+              top: 240,
+              child: Image.asset('assets/images/logo.png', height: 70),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     GlobalData.buttonPlayer.setVolume(0.2);
-    return Container(
-        margin: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-        child: GestureDetector(
-          onTap: () {
-            GlobalData.buttonPlayer.play(GlobalData.buttonSound);
-            Navigator.push(context, OptionsPage());
-          },
-          child: Animator(
-            cycles: 100000,
-            tween: Tween<double>(begin: 1.2, end: 1.0),
-            duration: const Duration(seconds: 1),
-            curve: Curves.easeInOut,
-            builder: (context, animatorState, child) {
-              return Transform.scale(
-                scale: animatorState.value,
-                child: Image.asset('assets/images/unknown.png', scale: 3),
-              );
-            },
-          ),
-        ));
+    return GestureDetector(
+      onTap: () {
+        players.length == 0 ? _showDialogEmptyPlayers() : () {
+          GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+          Navigator.push(context, OptionsPage());
+        }();
+      },
+      child: Animator(
+        cycles: 100000,
+        tween: Tween<double>(begin: 1.2, end: 1.0),
+        duration: const Duration(seconds: 1),
+        curve: Curves.easeInOut,
+        builder: (context, animatorState, child) {
+          return Transform.scale(
+            scale: animatorState.value,
+            child: Image.asset('assets/images/unknown.png', scale: 4),
+          );
+        },
+      ),
+    );
   }
 }
 
