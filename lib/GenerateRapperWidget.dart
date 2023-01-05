@@ -9,6 +9,7 @@ class GlobalData {
   static String rapname = "";
   static int difficulty = 1;
   static int score = 0;
+  static int player = 0;
   static List<String> randomRappersAni = [];
   static List<String> rappers = [];
   static bool diff1 = false;

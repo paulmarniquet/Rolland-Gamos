@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:Roland_Gamos/GenerateRapperWidget.dart';
+import 'package:Roland_Gamos/Multiplayer.dart';
 import 'package:flutter/material.dart';
 import 'Menu.dart';
 
@@ -36,7 +37,7 @@ class _TimerWidgetState extends State<TimerWidget> {
 
   void startcountdown() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (timeLeft != 0) {
+      if (timeLeft != 20) {
         setState(() {
           timeLeft--;
         });
@@ -65,7 +66,51 @@ class _TimerWidgetState extends State<TimerWidget> {
     newGame = true;
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const Menu()));
-    alertDialog();
+    if (players.length == 1) {
+      alertDialog();
+    } else {
+      showScores();
+    }
+  }
+
+  void showScores() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            AlertDialog(
+              shape: ShapeBorder.lerp(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  1),
+              title: const Text(""),
+              backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
+              content: Text("${players[GlobalData.player]} a perdu",
+                  style: textStyle, textAlign: TextAlign.center),
+              actions: [
+                TextButton(
+                  child: const Text("Recommence"),
+                  onPressed: () {
+                    GlobalData.score = 0;
+                    GlobalData.rappers.clear();
+                    GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+            Positioned(
+              top: 220,
+              child: Image.asset('assets/images/logo.png', height: 70),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void alertDialog() {

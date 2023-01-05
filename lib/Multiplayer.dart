@@ -118,18 +118,18 @@ class _MultiplayerState extends State<Multiplayer> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),
-                            color: players.length == 1
-                                ? Colors.yellow[300]
-                                : players.length == 2
-                                    ? Colors.orange[200]
-                                    : Colors.red[300],
+                            color: index == 1
+                                ? Colors.amberAccent
+                                : index == 2
+                                ? Colors.orange[200]
+                                : Colors.red[300],
                             child: ListTile(
                               title: Text(
                                 players[index],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'Cool',
-                                  color: players.length == 1 ? Colors.black54 : players.length == 2 ? Colors.white70 : Colors.white,
+                                  color: Colors.white,
                                 ),
                               ),
                               trailing: IconButton(

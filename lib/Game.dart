@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:Roland_Gamos/Algorithm.dart';
 import 'package:flutter/material.dart';
+import 'Multiplayer.dart';
 import 'PictureWidget.dart';
 import 'TimerWidget.dart';
 import 'GenerateRapperWidget.dart';
@@ -9,6 +10,7 @@ AudioPlayer falseResponse = AudioPlayer();
 final falseSound = AssetSource("sound/incorrect.mp3");
 AudioPlayer validResponse = AudioPlayer();
 final validSound = AssetSource("sound/correct.mp3");
+
 
 void scoreDiff() {
   if (GlobalData.difficulty == 1) {
@@ -30,7 +32,7 @@ bool checkRapperName(String name) {
 }
 
 class PlayPage extends MaterialPageRoute<void> {
-  PlayPage(rapname)
+  PlayPage(rapname, player)
       : super(builder: (BuildContext context) {
           validResponse.setVolume(0.1);
           validResponse.setSource(validSound);
@@ -42,7 +44,11 @@ class PlayPage extends MaterialPageRoute<void> {
               child: GestureDetector(
                   onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
                   child: Scaffold(
-                      backgroundColor: Colors.white,
+                      backgroundColor: player == 0
+                          ? Colors.amberAccent[100]
+                          : player == 1
+                          ? Colors.orange[200]
+                          : Colors.red[300],
                       body: SingleChildScrollView(
                         child: Center(
                             child: Column(children: <Widget>[
@@ -103,11 +109,16 @@ class PlayPage extends MaterialPageRoute<void> {
                                             GlobalData.rappers
                                                 .add(GlobalData.rapname);
                                             GlobalData.controller.clear();
+                                            player != players.length-1 ?
                                             Navigator.pushReplacement(context,
-                                                PlayPage(GlobalData.rapname));
+                                                PlayPage(GlobalData.rapname, player += 1)) :
+                                            Navigator.pushReplacement(context,
+                                                PlayPage(GlobalData.rapname, player = 0));
+                                            GlobalData.player = player;
                                           } else {
                                             falseResponse.play(falseSound);
                                             GlobalData.controller.clear();
+                                            GlobalData.player = player;
                                           }
                                         }),
                                         icon: const Icon(Icons.check)),
@@ -119,13 +130,21 @@ class PlayPage extends MaterialPageRoute<void> {
                                 controller: GlobalData.controller,
                               )),
                           const SizedBox(height: 100),
-                          Text(GlobalData.score.toString(),
+                          players.length == 1 ? Text(GlobalData.score.toString(),
                               style: const TextStyle(
                                   fontFamily: 'Mont22',
                                   letterSpacing: 5,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black)),
+                                  color: Colors.black))
+                              :
+                              Text(players[player],
+                                  style: const TextStyle(
+                                      fontFamily: 'Mont22',
+                                      letterSpacing: 10,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black)),
                         ])),
                       ))));
         });
