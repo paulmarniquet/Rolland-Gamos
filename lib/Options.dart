@@ -41,7 +41,8 @@ class OptionsPage extends MaterialPageRoute<void> {
                       color: Colors.black),
                   onPressed: () {
                     GlobalData.buttonPlayer.play(GlobalData.buttonSound);
-                    Navigator.push(context, PlayPage(GlobalData.rapname, GlobalData.player));
+                    Navigator.push(context,
+                        PlayPage(GlobalData.rapname, GlobalData.player));
                   },
                 ),
               ),

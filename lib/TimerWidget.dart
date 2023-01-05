@@ -132,15 +132,9 @@ class _TimerWidgetState extends State<TimerWidget> {
               content: GlobalData.score == 0
                   ? Text("Score : 0\n\nT'es finito..",
                       style: textStyle, textAlign: TextAlign.center)
-                  : GlobalData.score == 1
-                      ? Text(
+                  : Text(
                           "Score : ${GlobalData.score}"
-                          "\n\nTu as trouvé ${GlobalData.rappers.length - 1} rappeur",
-                          style: textStyle,
-                          textAlign: TextAlign.center)
-                      : Text(
-                          "Score : ${GlobalData.score}"
-                          "\n\nTu as trouvé ${GlobalData.rappers.length - 1} rappeurs",
+                          "\n\nTu as trouvé ${GlobalData.rappers.length - 1} rappeur(s)",
                           style: textStyle,
                           textAlign: TextAlign.center),
               actions: [

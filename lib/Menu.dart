@@ -53,20 +53,20 @@ class Menu extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-              child: Scaffold(
-                resizeToAvoidBottomInset: false,
-                backgroundColor: Colors.transparent,
-                body: Center(
-                  child: Column(children: const <Widget>[
-                    SizedBox(height: 130),
-                    GenerateRapper(),
-                    Multiplayer(),
-                    SizedBox(height: 30),
-                    Play(),
-                  ]),
-                ),
-              ),
-            ),
-          );
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: Column(children: const <Widget>[
+              SizedBox(height: 130),
+              GenerateRapper(),
+              Multiplayer(),
+              SizedBox(height: 30),
+              Play(),
+            ]),
+          ),
+        ),
+      ),
+    );
   }
 }

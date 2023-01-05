@@ -11,7 +11,6 @@ final falseSound = AssetSource("sound/incorrect.mp3");
 AudioPlayer validResponse = AudioPlayer();
 final validSound = AssetSource("sound/correct.mp3");
 
-
 void scoreDiff() {
   if (GlobalData.difficulty == 1) {
     GlobalData.score += 3;
@@ -47,8 +46,8 @@ class PlayPage extends MaterialPageRoute<void> {
                       backgroundColor: player == 0
                           ? Colors.amberAccent[100]
                           : player == 1
-                          ? Colors.orange[200]
-                          : Colors.red[300],
+                              ? Colors.orange[200]
+                              : Colors.red[300],
                       body: SingleChildScrollView(
                         child: Center(
                             child: Column(children: <Widget>[
@@ -109,11 +108,15 @@ class PlayPage extends MaterialPageRoute<void> {
                                             GlobalData.rappers
                                                 .add(GlobalData.rapname);
                                             GlobalData.controller.clear();
-                                            player != players.length-1 ?
-                                            Navigator.pushReplacement(context,
-                                                PlayPage(GlobalData.rapname, player += 1)) :
-                                            Navigator.pushReplacement(context,
-                                                PlayPage(GlobalData.rapname, player = 0));
+                                            player != players.length - 1
+                                                ? Navigator.pushReplacement(
+                                                    context,
+                                                    PlayPage(GlobalData.rapname,
+                                                        player += 1))
+                                                : Navigator.pushReplacement(
+                                                    context,
+                                                    PlayPage(GlobalData.rapname,
+                                                        player = 0));
                                             GlobalData.player = player;
                                           } else {
                                             falseResponse.play(falseSound);
@@ -130,15 +133,15 @@ class PlayPage extends MaterialPageRoute<void> {
                                 controller: GlobalData.controller,
                               )),
                           const SizedBox(height: 100),
-                          players.length == 1 ? Text(GlobalData.score.toString(),
-                              style: const TextStyle(
-                                  fontFamily: 'Mont22',
-                                  letterSpacing: 5,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black))
-                              :
-                              Text(players[player],
+                          players.length == 1
+                              ? Text(GlobalData.score.toString(),
+                                  style: const TextStyle(
+                                      fontFamily: 'Mont22',
+                                      letterSpacing: 5,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black))
+                              : Text(players[player],
                                   style: const TextStyle(
                                       fontFamily: 'Mont22',
                                       letterSpacing: 10,

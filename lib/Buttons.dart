@@ -12,7 +12,6 @@ class Play extends StatefulWidget {
 }
 
 class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
-
   void _showDialogEmptyPlayers() {
     showDialog(
       context: context,
@@ -29,14 +28,12 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
                   1),
               title: const Text(""),
               backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
-              content: const Text(
-                  "Entrez le nom d'un joueur",
+              content: const Text("Entrez le nom d'un joueur",
                   style: TextStyle(
                       color: Color.fromRGBO(0, 0, 0, 1),
                       fontSize: 20,
                       fontFamily: "Roboto"),
-                  textAlign: TextAlign.center
-              ),
+                  textAlign: TextAlign.center),
               actions: [
                 TextButton(
                   child: const Text("OK"),
@@ -62,10 +59,12 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
     GlobalData.buttonPlayer.setVolume(0.2);
     return GestureDetector(
       onTap: () {
-        players.length == 0 ? _showDialogEmptyPlayers() : () {
-          GlobalData.buttonPlayer.play(GlobalData.buttonSound);
-          Navigator.push(context, OptionsPage());
-        }();
+        players.length == 0
+            ? _showDialogEmptyPlayers()
+            : () {
+                GlobalData.buttonPlayer.play(GlobalData.buttonSound);
+                Navigator.push(context, OptionsPage());
+              }();
       },
       child: Animator(
         cycles: 100000,

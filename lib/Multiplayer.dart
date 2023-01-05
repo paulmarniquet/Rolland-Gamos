@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'GenerateRapperWidget.dart';
 
-List<String> players = ["Mist", "Mils"];
+List<String> players = [];
 
 class Multiplayer extends StatefulWidget {
   const Multiplayer({super.key});
@@ -19,8 +18,8 @@ class _MultiplayerState extends State<Multiplayer> {
     } else {
       setState(() {
         if (_textController.text.isNotEmpty) {
-        players.add(_textController.text);
-        _textController.clear();
+          players.add(_textController.text);
+          _textController.clear();
         }
       });
     }
@@ -42,14 +41,12 @@ class _MultiplayerState extends State<Multiplayer> {
                   1),
               title: const Text(""),
               backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
-              content: const Text(
-                "Erreur : 3 joueurs maximum",
-                style: TextStyle(
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: 20,
-                    fontFamily: "Roboto"),
-              textAlign: TextAlign.center
-              ),
+              content: const Text("Erreur : 3 joueurs maximum",
+                  style: TextStyle(
+                      color: Color.fromRGBO(0, 0, 0, 1),
+                      fontSize: 20,
+                      fontFamily: "Roboto"),
+                  textAlign: TextAlign.center),
               actions: [
                 TextButton(
                   child: const Text("OK"),
@@ -95,8 +92,7 @@ class _MultiplayerState extends State<Multiplayer> {
                         borderSide: BorderSide(color: Colors.yellow),
                         borderRadius: BorderRadius.all(Radius.circular(20.0))),
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.add,
-                      size: 30),
+                      icon: const Icon(Icons.add, size: 30),
                       onPressed: () {
                         FocusScope.of(context).unfocus();
                         _addPlayer();
@@ -121,8 +117,8 @@ class _MultiplayerState extends State<Multiplayer> {
                             color: index == 1
                                 ? Colors.amberAccent
                                 : index == 2
-                                ? Colors.orange[200]
-                                : Colors.red[300],
+                                    ? Colors.orange[200]
+                                    : Colors.red[300],
                             child: ListTile(
                               title: Text(
                                 players[index],
@@ -133,9 +129,8 @@ class _MultiplayerState extends State<Multiplayer> {
                                 ),
                               ),
                               trailing: IconButton(
-                                icon: Icon(Icons.delete,
-                                size: 25,
-                                color: players.length == 1 ? Colors.black54 : Colors.white60),
+                                icon: const Icon(Icons.delete,
+                                    size: 25, color: Colors.white60),
                                 onPressed: () {
                                   setState(() {
                                     players.removeAt(index);
