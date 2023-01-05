@@ -41,7 +41,7 @@ class _MultiplayerState extends State<Multiplayer> {
                   1),
               title: const Text(""),
               backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
-              content: const Text("Erreur : 3 joueurs maximum",
+              content: const Text("\nERREUR :\n\n 3 joueurs maximum.",
                   style: TextStyle(
                       color: Color.fromRGBO(0, 0, 0, 1),
                       fontSize: 20,

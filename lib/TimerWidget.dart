@@ -89,7 +89,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                   1),
               title: const Text(""),
               backgroundColor: const Color.fromRGBO(255, 250, 226, 1),
-              content: Text("${players[GlobalData.player]} a perdu !",
+              content: Text("${players[GlobalData.player]} a perdu !\n\nScore : ${GlobalData.score}",
                   style: textStyle, textAlign: TextAlign.center),
               actions: [
                 TextButton(
