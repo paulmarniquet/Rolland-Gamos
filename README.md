@@ -19,11 +19,6 @@ Enjoy !
   ## Installation
   
   You can download the project [here](https://github.com/paulmarniquet/Rolland-Gamos/archive/refs/heads/master.zip) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
-  
-
-  ## Usage
-
-
 
   ## Questions
 
