@@ -10,7 +10,9 @@
 
   ## Description
   
-Rolland Gamos is a rap game where the objective is to identify which rapper has collaborated with which other rapper. The game can be played alone or with others (up to three players). The game is played in a chain format where the featured artist for one rapper becomes the main artist for the next round. The game can be played using a single phone that is passed around between the players.
+Rolland Gamos is a rap game where the objective is to identify which rapper has collaborated with which other rapper. The game can be played alone or with others (up to three players). 
+The game is played in a chain format where the featured artist for one rapper becomes the main artist for the next round. 
+Rolland Gamos can be played using a single phone that is passed around between the players.
   
   ## Installation
   
