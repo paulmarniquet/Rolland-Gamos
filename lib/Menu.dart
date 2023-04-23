@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
+import 'package:animator/animator.dart';
 import 'package:flutter/services.dart';
 import 'Buttons.dart';
 import 'package:flutter/material.dart';
@@ -48,8 +49,7 @@ class Menu extends StatelessWidget {
       child: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background.gif'),
-            opacity: 0.4,
+            image: AssetImage('assets/images/backgroundanim.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -57,12 +57,24 @@ class Menu extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.transparent,
           body: Center(
-            child: Column(children: const <Widget>[
-              SizedBox(height: 130),
-              GenerateRapper(),
-              Multiplayer(),
-              SizedBox(height: 30),
-              Play(),
+            child: Column(children: <Widget>[
+              const SizedBox(height: 120),
+              //GenerateRapper(),
+              Animator(
+                cycles: 100000,
+                tween: Tween<double>(begin: 1.1, end: 1.0),
+                duration: const Duration(seconds: 10),
+                curve: Curves.easeInOut,
+                builder: (context, animatorState, child) {
+                  return Transform.scale(
+                    scale: animatorState.value,
+                    child: Image.asset('assets/images/logo.png', scale: 8),
+                  );
+                },
+              ),
+              const Multiplayer(),
+              const SizedBox(height: 30),
+              const Play(),
             ]),
           ),
         ),
