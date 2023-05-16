@@ -6,7 +6,9 @@
 
 *******
 
-![ScreenMenu](https://media-s3-us-east-1.ceros.com/redbull/images/2019/06/07/7c6f8dff4b0f3e82fb4f17667cb59f75/logo-rap-jeu-def.png)
+<p align="center">
+      <img src="https://media-s3-us-east-1.ceros.com/redbull/images/2019/06/07/7c6f8dff4b0f3e82fb4f17667cb59f75/logo-rap-jeu-def.png" alt="html" width="300" height="300"/>   
+</p>
 
   ## Description
   
