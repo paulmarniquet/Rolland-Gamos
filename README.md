@@ -9,7 +9,10 @@
 <p align="center">
   
 
-https://github.com/paulmarniquet/Rolland-Gamos/assets/72015483/1aff73ad-f998-47a4-a850-02a004179b8d
+
+https://github.com/paulmarniquet/Rolland-Gamos/assets/72015483/2ac3d5b3-d947-4a32-be2d-00465a66ca1b
+
+
 
 
 </p>
